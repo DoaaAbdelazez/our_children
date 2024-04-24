@@ -1,11 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 
-class SplashView extends StatelessWidget {
+import '../../../../core/functions/navigation.dart';
+import '../../../../core/utils/app_text_style.dart';
+
+class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    delayedNavigate(context);
+    super.initState();
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +60,10 @@ class SplashView extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              const Text(
+              Text(
                 AppStrings.appName,
-                style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              )
+                style: CustomTextStyle.inter700style24,
+              ),
             ],
           ),
         ),
@@ -58,3 +71,8 @@ class SplashView extends StatelessWidget {
     );
   }
 }
+void delayedNavigate(context) {
+    Future.delayed(const Duration(seconds: 2), () {
+      customNavigate(context, "/loginScreen");
+    });
+  }
