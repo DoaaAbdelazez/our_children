@@ -3,8 +3,10 @@ import 'package:our_children/Features/auth/peresenration/widgets/have_account.da
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
+import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_assets.dart';
-import '../../../../core/widgets/custom_btn.dart';
+
+import '../../../../core/widgets/custome_button.dart';
 import '../widgets/custom-text_feild.dart';
 import '../widgets/terms_and_condation.dart';
 
@@ -14,17 +16,14 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        // width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(Assets.assetsImagesLogin),
-            fit: BoxFit.cover,
-          ),
+      body: Stack(fit: StackFit.expand, children: [
+        //!background
+        Image.asset(
+          Assets.assetsImagesBackgroundone,
+          fit: BoxFit.cover,
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
+        Padding(
+          padding: const EdgeInsets.all(20),
           child: CustomScrollView(
             slivers: [
               const SliverToBoxAdapter(
@@ -34,22 +33,22 @@ class SignUpView extends StatelessWidget {
               ),
               //!image
               SliverToBoxAdapter(
-                child: Image.asset(Assets.assetsImagesLogo),
+                child: Image.asset(Assets.assetsImagesLogo, height: 170),
               ),
 
               // //!Hello text
-              // SliverToBoxAdapter(
-              //   child: Padding(
-              //     padding: const EdgeInsets.only(bottom: 4, top: 5),
-              //     child: Center(
-              //       child: Text(
-              //         AppStrings.welcome,
-              //         style: CustomTextStyle.cairo700style40
-              //             .copyWith(fontSize: 30),
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 4, top: 5),
+                  child: Center(
+                    child: Text(
+                      AppStrings.welcome,
+                      style: CustomTextStyle.cairo700style50
+                          .copyWith(fontSize: 35),
+                    ),
+                  ),
+                ),
+              ),
               //!sizedbox
               const SliverToBoxAdapter(
                 child: SizedBox(
@@ -112,7 +111,9 @@ class SignUpView extends StatelessWidget {
               ),
               //!checkBox_Text
               const SliverToBoxAdapter(
-                child: TermsAndCondationWdget(),
+                child: TermsAndCondationWdget(
+                  text: AppStrings.accept,
+                ),
               ),
               //!sizedBox
               const SliverToBoxAdapter(
@@ -122,8 +123,10 @@ class SignUpView extends StatelessWidget {
               ),
               //!btn
               SliverToBoxAdapter(
-                child: CustomBtn(
-                  onPressed: () {},
+                child: CustomButton(
+                  onPressed: () {
+                    customReplacementNavigate(context, "/SignInView");
+                  },
                   text: AppStrings.signup,
                 ),
               ),
@@ -140,7 +143,7 @@ class SignUpView extends StatelessWidget {
             ],
           ),
         ),
-      ),
+      ]),
     );
   }
 }

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
 import 'custome_checkbox.dart';
 
 class TermsAndCondationWdget extends StatelessWidget {
-  const TermsAndCondationWdget({super.key});
-
+  const TermsAndCondationWdget({super.key, required this.text});
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -14,7 +13,7 @@ class TermsAndCondationWdget extends StatelessWidget {
       children: [
         const CustomCheckBox(),
         Text(
-          AppStrings.accept,
+        text,
           style: CustomTextStyle.almarai400style14,
         ),
       ],

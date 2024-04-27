@@ -14,8 +14,9 @@ class HaveAccount extends StatelessWidget {
           children: [
             TextSpan(text: text1, style: CustomTextStyle.almarai400style14),
             TextSpan(
-              text: text2,
-            ),
+                text: text2,
+                style: CustomTextStyle.almarai400style14
+                    .copyWith(fontWeight: FontWeight.bold)),
           ],
         ),
       ),

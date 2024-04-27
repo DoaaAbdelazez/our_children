@@ -24,7 +24,7 @@ class CustomtextFeild extends StatelessWidget {
           filled: true,
           prefixIcon: prefixIcon,
           labelText: labeltext,
-          labelStyle: CustomTextStyle.cairo400style20,
+          labelStyle: CustomTextStyle.cairo400style15,
           border: getBorderStyle(),
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),
@@ -37,6 +37,6 @@ class CustomtextFeild extends StatelessWidget {
 OutlineInputBorder getBorderStyle() {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(12),
-    borderSide: const BorderSide(color: AppColors.black),
+    borderSide: const BorderSide(color: AppColors.black, strokeAlign: 3),
   );
 }

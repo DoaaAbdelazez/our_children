@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:our_children/core/utils/app_colors.dart';
 
 class CustomCheckBox extends StatefulWidget {
   const CustomCheckBox({super.key});
@@ -14,6 +15,10 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
     return Align(
       alignment: Alignment.center,
       child: Checkbox(
+        side: const BorderSide(
+          color: AppColors.white,
+        ),
+        checkColor: AppColors.white,
         value: value,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
         onChanged: (newValue) {

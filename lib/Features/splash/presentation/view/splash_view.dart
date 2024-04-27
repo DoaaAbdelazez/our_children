@@ -35,7 +35,10 @@ class _SplashViewState extends State<SplashView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(Assets.assetsImagesLogo),
+              Image.asset(Assets.assetsImagesLogo, width: 200),
+              const SizedBox(
+                height: 10,
+              ),
               Text(
                 AppStrings.appName,
                 style: CustomTextStyle.inter700style24,
@@ -50,6 +53,6 @@ class _SplashViewState extends State<SplashView> {
 
 void delayedNavigate(context) {
   Future.delayed(const Duration(seconds: 2), () {
-    customReplacementNavigate(context, "/SignUpView");
+    customReplacementNavigate(context, "/FirstScreenView");
   });
 }
