@@ -16,4 +16,7 @@ abstract class AppStrings {
   static const String forgetPass = "نسيت كلمةالسر؟";
   static const String noHaveAccount = " ليس لديك حساب؟";
   static const String createAccount = " إنشاء حساب ";
+  static const String explane = " عشان نسهل عليك هنعمل شوية خطوات ";
+  static const String explane2 = " محتاجين شوية بيانات";
+  static const String clickHer = " دوس هنا عشان نكمل!";
 }

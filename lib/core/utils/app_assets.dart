@@ -1,9 +1,10 @@
 class Assets {
   Assets._();
-  
+
   /// Assets for assetsImagesBackgroundone
   /// assets/images/backgroundone.PNG
-  static const String assetsImagesBackgroundone = "assets/images/backgroundone.PNG";
+  static const String assetsImagesBackgroundone =
+      "assets/images/backgroundone.PNG";
 
   /// Assets for assetsImagesLogin
   /// assets/images/login.png
@@ -19,6 +20,10 @@ class Assets {
 
   /// Assets for assetsImagesSplashscreen
   /// assets/images/splashscreen.png
-  static const String assetsImagesSplashscreen = "assets/images/splashscreen.png";
+  static const String assetsImagesSplashscreen =
+      "assets/images/splashscreen.png";
+  static const String assetsImagesFrame3 =
+      "assets/images/Frame3.png";
+  static const String assetsImagesFrame4 =
+      "assets/images/Frame4.png";
 }
-

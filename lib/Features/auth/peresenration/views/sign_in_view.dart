@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 
+import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
@@ -113,7 +114,9 @@ class SignInView extends StatelessWidget {
               //!btn
               SliverToBoxAdapter(
                 child: CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    customReplacementNavigate(context, "/RulesScreenView");
+                  },
                   text: AppStrings.login,
                 ),
               ),

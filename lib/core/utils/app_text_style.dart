@@ -7,6 +7,11 @@ abstract class CustomTextStyle {
       fontWeight: FontWeight.w700,
       color: AppColors.white,
       fontFamily: "Inter");
+  static final cairo400style24 =  TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w400,
+      color: AppColors.white,
+      fontFamily: "Cairo");
   static final inter700style28 = const TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.w800,
