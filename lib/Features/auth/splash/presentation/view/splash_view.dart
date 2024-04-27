@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 
-import '../../../../core/functions/navigation.dart';
-import '../../../../core/utils/app_text_style.dart';
+import '../../../../../core/functions/navigation.dart';
+import '../../../../../core/utils/app_text_style.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

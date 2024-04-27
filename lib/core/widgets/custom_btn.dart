@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:our_children/core/utils/app_text_style.dart';
+
+import '../utils/app_colors.dart';
+
+class CustomBtn extends StatelessWidget {
+  const CustomBtn({super.key, this.color, required this.text, this.onPressed});
+  final Color? color;
+  final String text;
+  final VoidCallback? onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: 56,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color ?? AppColors.primaryColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        child: Text(
+          text,
+          style: CustomTextStyle.cairo400style20
+              .copyWith(fontSize: 18, color: AppColors.black),
+        ),
+        
+      ),
+    );
+  }
+}
