@@ -36,7 +36,7 @@ class CustomButton extends StatelessWidget {
               child: Icon(
                 size: 40,
                 Icons.arrow_circle_right_rounded,
-                color: AppColors.black,
+                color: AppColors.white,
               ),
             ),
             const SizedBox(
@@ -45,7 +45,7 @@ class CustomButton extends StatelessWidget {
             Text(
               text,
               style: CustomTextStyle.cairo700style50
-                  .copyWith(fontSize: 18, color: AppColors.black),
+                  .copyWith(fontSize: 18, color: AppColors.white),
             ),
           ],
         ),

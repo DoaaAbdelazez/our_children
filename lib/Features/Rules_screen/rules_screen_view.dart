@@ -4,6 +4,8 @@ import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 import 'package:our_children/core/widgets/custom_btn.dart';
 
+import '../../core/functions/navigation.dart';
+
 class RulesScreenView extends StatelessWidget {
   const RulesScreenView({super.key});
 
@@ -24,7 +26,7 @@ class RulesScreenView extends StatelessWidget {
                 //!First text
                 Text(
                   AppStrings.explane,
-                  style: CustomTextStyle.cairo400style24,
+                  style: CustomTextStyle.AJannatLT400style24,
                 ),
                 const SizedBox(
                   height: 10,
@@ -32,7 +34,7 @@ class RulesScreenView extends StatelessWidget {
                 //!sec_text
                 Text(
                   AppStrings.explane2,
-                  style: CustomTextStyle.cairo400style24,
+                  style: CustomTextStyle.AJannatLT400style24,
                 ),
 //!frame1_image
                 Image.asset(
@@ -48,7 +50,11 @@ class RulesScreenView extends StatelessWidget {
                 //!btn
                 Padding(
                   padding: const EdgeInsets.only(right: 25, left: 25),
-                  child: CustomBtn(onPressed: () {}, text: AppStrings.clickHer),
+                  child: CustomBtn(
+                      onPressed: () {
+                        customReplacementNavigate(context, "/ChooseScreenView");
+                      },
+                      text: AppStrings.clickHer),
                 )
               ],
             ),

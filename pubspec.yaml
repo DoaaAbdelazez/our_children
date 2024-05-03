@@ -71,11 +71,14 @@ flutter:
     - family: Inter
     - family: Almarai
     - family: Cairo
+    - family: A Jannat LT
+
 
       fonts:
         - asset: assets/fonts/Inter-VariableFont_slnt,wght.ttf
         - asset: assets/fonts/Almarai-Regular.ttf
         - asset: assets/fonts/Cairo-VariableFont_slnt,wght.ttf
+        - asset: assets/fonts/alfont_com_AAJannatLT-.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_assets:

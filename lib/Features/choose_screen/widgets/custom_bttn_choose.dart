@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 
-import '../utils/app_colors.dart';
+import '../../../core/utils/app_colors.dart';
 
-class CustomBtn extends StatelessWidget {
-  const CustomBtn({
+class CustomButtnChoose extends StatelessWidget {
+  const CustomButtnChoose({
     super.key,
     this.color,
     required this.text,
@@ -17,20 +17,20 @@ class CustomBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: double.infinity,
-      height: 56,
+      width: 114,
+      height: 100,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: color ?? AppColors.primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(8),
           ),
         ),
         child: Text(
           text,
-          style: CustomTextStyle.cairo400style20
-              .copyWith(fontSize: 18, color: AppColors.white),
+          style: CustomTextStyle.cairo600style24
+              .copyWith(fontSize: 18, color: AppColors.black),
         ),
       ),
     );

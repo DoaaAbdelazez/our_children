@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:our_children/Features/auth/peresenration/widgets/have_account.dart';
-import 'package:our_children/core/utils/app_colors.dart';
-import 'package:our_children/core/utils/app_strings.dart';
-import 'package:our_children/core/utils/app_text_style.dart';
-import '../../../../core/functions/navigation.dart';
-import '../../../../core/utils/app_assets.dart';
+import 'package:our_children/core/utils/app_assets.dart';
 
+import '../../../../core/functions/navigation.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../../../../core/utils/app_strings.dart';
+import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/widgets/custome_button.dart';
 import '../widgets/custom-text_feild.dart';
+
 import '../widgets/terms_and_condation.dart';
 
-class SignUpView extends StatelessWidget {
-  const SignUpView({super.key});
+class SignInView extends StatelessWidget {
+  const SignInView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class SignUpView extends StatelessWidget {
             slivers: [
               const SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 18,
+                  height: 60,
                 ),
               ),
               //!image
@@ -55,18 +55,7 @@ class SignUpView extends StatelessWidget {
                   height: 10,
                 ),
               ),
-              //!name
-              const SliverToBoxAdapter(
-                child: Center(
-                  child: CustomtextFeild(
-                    prefixIcon: Icon(
-                      Icons.person,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.enterYourName,
-                  ),
-                ),
-              ),
+
               //!Email
               const SliverToBoxAdapter(
                 child: Center(
@@ -83,6 +72,8 @@ class SignUpView extends StatelessWidget {
               const SliverToBoxAdapter(
                 child: Center(
                   child: CustomtextFeild(
+                    isPassword: true,
+                    icon: Icons.remove_red_eye,
                     prefixIcon: Icon(
                       Icons.lock_outline,
                       color: AppColors.black,
@@ -91,28 +82,35 @@ class SignUpView extends StatelessWidget {
                   ),
                 ),
               ),
-              //!conf_pass
-              const SliverToBoxAdapter(
-                child: Center(
-                  child: CustomtextFeild(
-                    prefixIcon: Icon(
-                      Icons.lock_outline,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.confPassword,
-                  ),
-                ),
-              ),
+
               //!sizedBox
               const SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 12,
+                  height: 10,
                 ),
               ),
               //!checkBox_Text
-              const SliverToBoxAdapter(
-                child: TermsAndCondationWdget(
-                  text: AppStrings.accept,
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    const TermsAndCondationWdget(
+                      text: AppStrings.rememberMe,
+                    ),
+                    const SizedBox(
+                      width: 168,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        customReplacementNavigate(
+                            context, "/ForgetPasswordView");
+                      },
+                      child: Text(
+                        AppStrings.forgetPass,
+                        style: CustomTextStyle.almarai400style14
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               //!sizedBox
@@ -125,9 +123,9 @@ class SignUpView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: CustomButton(
                   onPressed: () {
-                    customReplacementNavigate(context, "/SignInView");
+                    customReplacementNavigate(context, "/RulesScreenView");
                   },
-                  text: AppStrings.signup,
+                  text: AppStrings.login,
                 ),
               ),
               //!sizedBox
@@ -137,9 +135,25 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!HaveAccount
-              const SliverToBoxAdapter(
-                  child: HaveAccount(
-                      text1: AppStrings.haveAccount, text2: AppStrings.login)),
+              SliverToBoxAdapter(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(AppStrings.noHaveAccount,
+                        style: CustomTextStyle.almarai400style14),
+                    TextButton(
+                      onPressed: () {
+                        customReplacementNavigate(context, "/SignUpView");
+                      },
+                      child: Text(
+                        AppStrings.createAccount,
+                        style: CustomTextStyle.almarai400style14
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
