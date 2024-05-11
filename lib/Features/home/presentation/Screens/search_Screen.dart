@@ -48,7 +48,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     width: 243,
                     height: 195,
                     decoration: BoxDecoration(
-                        color: AppColors.lightGry,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.circular(15)),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),

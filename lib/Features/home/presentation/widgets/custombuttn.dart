@@ -29,7 +29,7 @@ class CustomButtnHome extends StatelessWidget {
         child: Text(
           text,
           style: CustomTextStyle.cairo600style24
-              .copyWith(fontSize: 18, color: AppColors.white),
+              .copyWith(fontSize: 18, color: AppColors.black),
         ),
       ),
     );

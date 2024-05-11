@@ -30,7 +30,7 @@ class CustomBtn extends StatelessWidget {
         child: Text(
           text,
           style: CustomTextStyle.cairo400style20
-              .copyWith(fontSize: 18, color: AppColors.white),
+              .copyWith(fontSize: 18, color: AppColors.black),
         ),
       ),
     );

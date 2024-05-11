@@ -15,9 +15,9 @@ class CustomTextForm extends StatelessWidget {
         top: 16,
       ),
       child: TextFormField(
-        cursorColor: AppColors.primaryColor,
+        cursorColor: AppColors.black,
         decoration: InputDecoration(
-          fillColor: AppColors.lightGry,
+          fillColor: AppColors.white,
           filled: true,
           labelStyle: CustomTextStyle.cairo400style15,
           border: getBorderStyle(),

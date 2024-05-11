@@ -16,7 +16,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
       alignment: Alignment.center,
       child: Checkbox(
         side: const BorderSide(
-          color: AppColors.white,
+          color: AppColors.black,
         ),
         checkColor: AppColors.white,
         value: value,

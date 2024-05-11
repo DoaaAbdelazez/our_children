@@ -52,9 +52,9 @@ class FirstScreenView extends StatelessWidget {
                         customReplacementNavigate(context, "/SignUpView");
                       },
                       icon: const Icon(
-                        Icons.arrow_circle_right_rounded,
-                        size: 50,
-                        color: AppColors.primaryColor,
+                        Icons.arrow_back_ios,
+                        size: 25,
+                        color: AppColors.black,
                       ),
                     ),
                     Text(
@@ -65,7 +65,7 @@ class FirstScreenView extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(
-                  width: 160,
+                  width: 175,
                 ),
                 Container(
                   alignment: Alignment.center,

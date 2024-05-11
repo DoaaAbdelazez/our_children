@@ -17,13 +17,13 @@ abstract class CustomTextStyle {
   static final inter700style28 = const TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.w800,
-      color: AppColors.primaryColor,
+      color: AppColors.black,
       fontFamily: "Inter");
 
   static final almarai400style14 = const TextStyle(
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: FontWeight.w400,
-      color: AppColors.white,
+      color: AppColors.black,
       fontFamily: "Almarai");
 
   static final cairo700style50 = const TextStyle(
