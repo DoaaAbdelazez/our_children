@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'widgets/custom_bttn_choose.dart';
@@ -34,9 +35,7 @@ class ChooseScreenView extends StatelessWidget {
                 ),
                 //!buttons
                 CustomButtonChoose(
-                    onPressed: () {
-                      
-                    }, text: AppStrings.searchFamily),
+                    onPressed: () {}, text: AppStrings.searchFamily),
 
                 const SizedBox(
                   height: 24,
@@ -50,11 +49,18 @@ class ChooseScreenView extends StatelessWidget {
                 Row(
                   children: [
                     CustomButtnChoose(
-                        onPressed: () {}, text: AppStrings.search),
-                    SizedBox(
+                        onPressed: () {
+                          customReplacementNavigate(context, "/SearchScreen");
+                        },
+                        text: AppStrings.search),
+                    const SizedBox(
                       width: 22,
                     ),
-                    CustomButtnChoose(onPressed: () {}, text: AppStrings.report)
+                    CustomButtnChoose(
+                        onPressed: () {
+                          customReplacementNavigate(context, "/ReportScreen");
+                        },
+                        text: AppStrings.report)
                   ],
                 )
               ],

@@ -11,14 +11,13 @@ class OurChildren extends StatelessWidget {
     return MaterialApp.router(
       locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const[
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: S.delegate.supportedLocales,
-          
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: S.delegate.supportedLocales,
       routerConfig: router,
     );
   }

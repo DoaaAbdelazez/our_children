@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
+import '../../../../core/utils/app_colors.dart';
 
-import '../../../core/utils/app_colors.dart';
-
-class CustomButtonChoose extends StatelessWidget {
-  const CustomButtonChoose({
+class CustomButtnHome extends StatelessWidget {
+  const CustomButtnHome({
     super.key,
     this.color,
     required this.text,
@@ -17,8 +16,8 @@ class CustomButtonChoose extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 250,
-      height: 100,
+      width: 100,
+      height: 45,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

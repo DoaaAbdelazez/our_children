@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:our_children/core/utils/app_assets.dart';
-
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/widgets/custome_button.dart';
 import '../widgets/custom-text_feild.dart';
-
 import '../widgets/terms_and_condation.dart';
 
 class SignInView extends StatelessWidget {
@@ -59,7 +57,7 @@ class SignInView extends StatelessWidget {
               //!Email
               const SliverToBoxAdapter(
                 child: Center(
-                  child: CustomtextFeild(
+                  child: CustomTextFormField(
                     prefixIcon: Icon(
                       Icons.email_outlined,
                       color: AppColors.black,
@@ -71,7 +69,7 @@ class SignInView extends StatelessWidget {
               //!password
               const SliverToBoxAdapter(
                 child: Center(
-                  child: CustomtextFeild(
+                  child: CustomTextFormField(
                     isPassword: true,
                     icon: Icons.remove_red_eye,
                     prefixIcon: Icon(

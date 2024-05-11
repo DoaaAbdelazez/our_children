@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_assets.dart';
-
 import '../../../../core/widgets/custome_button.dart';
 import '../widgets/custom-text_feild.dart';
 import '../widgets/terms_and_condation.dart';
@@ -58,7 +56,7 @@ class SignUpView extends StatelessWidget {
               //!name
               const SliverToBoxAdapter(
                 child: Center(
-                  child: CustomtextFeild(
+                  child: CustomTextFormField(
                     prefixIcon: Icon(
                       Icons.person,
                       color: AppColors.black,
@@ -70,7 +68,7 @@ class SignUpView extends StatelessWidget {
               //!Email
               const SliverToBoxAdapter(
                 child: Center(
-                  child: CustomtextFeild(
+                  child: CustomTextFormField(
                     prefixIcon: Icon(
                       Icons.email_outlined,
                       color: AppColors.black,
@@ -82,7 +80,7 @@ class SignUpView extends StatelessWidget {
               //!password
               const SliverToBoxAdapter(
                 child: Center(
-                  child: CustomtextFeild(
+                  child: CustomTextFormField(
                     isPassword: true,
                     icon: Icons.remove_red_eye,
                     prefixIcon: Icon(
@@ -96,7 +94,7 @@ class SignUpView extends StatelessWidget {
               //!conf_pass
               const SliverToBoxAdapter(
                 child: Center(
-                  child: CustomtextFeild(
+                  child: CustomTextFormField(
                     isPassword: true,
                     icon: Icons.remove_red_eye,
                     prefixIcon: Icon(

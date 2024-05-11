@@ -11,6 +11,8 @@ import '../../Features/First_Screen/first_screen_view.dart';
 import '../../Features/auth/peresenration/screens/resete_password_view.dart';
 import '../../Features/auth/peresenration/screens/sign_in_view.dart';
 import '../../Features/auth/peresenration/screens/sign_up_view.dart';
+import '../../Features/home/presentation/Screens/report_screen.dart';
+import '../../Features/home/presentation/Screens/search_Screen.dart';
 
 final GoRouter router = GoRouter(
   routes: [
@@ -51,6 +53,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: "/ChooseScreenView",
       builder: (context, state) => const ChooseScreenView(),
+    ),
+    GoRoute(
+      path: "/SearchScreen",
+      builder: (context, state) => const SearchScreen(),
+    ),
+    GoRoute(
+      path: "/ReportScreen",
+      builder: (context, state) => const ReportScreen(),
     ),
   ],
 );

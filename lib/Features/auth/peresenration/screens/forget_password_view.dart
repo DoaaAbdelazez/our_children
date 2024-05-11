@@ -5,7 +5,6 @@ import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 import 'package:our_children/core/widgets/custom_btn.dart';
-import 'package:our_children/core/widgets/custome_button.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({super.key});
@@ -23,46 +22,48 @@ class ForgetPasswordView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 60),
-                  child: Image.asset(
-                    Assets.assetsImagesLogo,
-                    width: 200,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 60),
+                    child: Image.asset(
+                      Assets.assetsImagesLogo,
+                      width: 200,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 54,
-                ),
-                Text(
-                  AppStrings.isForgetPassword,
-                  style: CustomTextStyle.cairo700style24,
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                Text(
-                  AppStrings.pleseWriteEmail,
-                  style: CustomTextStyle.cairo400style16,
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                const CustomtextFeild(
-                  labeltext: AppStrings.email,
-                  prefixIcon: Icon(Icons.email),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                CustomBtn(
-                  onPressed: () {
-                    customReplacementNavigate(context, "/ResetePasswordView");
-                  },
-                  text: AppStrings.sendCode,
-                ),
-              ],
+                  const SizedBox(
+                    height: 54,
+                  ),
+                  Text(
+                    AppStrings.isForgetPassword,
+                    style: CustomTextStyle.cairo700style24,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  Text(
+                    AppStrings.pleseWriteEmail,
+                    style: CustomTextStyle.cairo400style16,
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                  const CustomTextFormField(
+                    labeltext: AppStrings.email,
+                    prefixIcon: Icon(Icons.email),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  CustomBtn(
+                    onPressed: () {
+                      customReplacementNavigate(context, "/ResetePasswordView");
+                    },
+                    text: AppStrings.sendCode,
+                  ),
+                ],
+              ),
             ),
           )
         ],

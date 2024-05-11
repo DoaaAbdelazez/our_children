@@ -13,7 +13,7 @@ class TermsAndCondationWdget extends StatelessWidget {
       children: [
         const CustomCheckBox(),
         Text(
-        text,
+          text,
           style: CustomTextStyle.almarai400style14,
         ),
       ],

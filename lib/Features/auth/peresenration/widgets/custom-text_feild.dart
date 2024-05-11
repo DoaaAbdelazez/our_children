@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_text_style.dart';
 
-class CustomtextFeild extends StatelessWidget {
-  const CustomtextFeild({
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField({
     super.key,
     required this.labeltext,
     required this.prefixIcon,
@@ -23,7 +23,7 @@ class CustomtextFeild extends StatelessWidget {
       padding: const EdgeInsets.only(
         top: 16,
       ),
-      child: TextField(
+      child: TextFormField(
         obscureText: isPassword,
         cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(

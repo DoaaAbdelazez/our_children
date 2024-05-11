@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
-
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -45,7 +43,7 @@ class ResetePasswordView extends StatelessWidget {
                   const SizedBox(
                     height: 24,
                   ),
-                  const CustomtextFeild(
+                  const CustomTextFormField(
                     isPassword: true,
                     icon: Icons.remove_red_eye,
                     prefixIcon: Icon(
@@ -57,7 +55,7 @@ class ResetePasswordView extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  const CustomtextFeild(
+                  const CustomTextFormField(
                     isPassword: true,
                     icon: Icons.remove_red_eye,
                     prefixIcon: Icon(
@@ -69,7 +67,7 @@ class ResetePasswordView extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  const CustomtextFeild(
+                  const CustomTextFormField(
                     prefixIcon: Icon(
                       Icons.code,
                       color: AppColors.black,

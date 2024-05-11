@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 
 abstract class CustomTextStyle {
-  static final inter700style24 =  TextStyle(
+  static final inter700style24 = TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w700,
       color: AppColors.white,
       fontFamily: "Inter");
 
-  static final cairo400style24 =  TextStyle(
+  static final cairo400style24 = TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w400,
       color: AppColors.white,
@@ -19,7 +19,6 @@ abstract class CustomTextStyle {
       fontWeight: FontWeight.w800,
       color: AppColors.primaryColor,
       fontFamily: "Inter");
-
 
   static final almarai400style14 = const TextStyle(
       fontSize: 14,
@@ -44,7 +43,7 @@ abstract class CustomTextStyle {
       fontWeight: FontWeight.w400,
       color: AppColors.white,
       fontFamily: "Cairo");
-      
+
   static final cairo600style24 = const TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.w600,
@@ -59,6 +58,12 @@ abstract class CustomTextStyle {
 
   static final cairo400style16 = const TextStyle(
       fontSize: 15,
+      fontWeight: FontWeight.w400,
+      color: AppColors.white,
+      fontFamily: "Cairo");
+
+  static final cairo400style30 = const TextStyle(
+      fontSize: 30,
       fontWeight: FontWeight.w400,
       color: AppColors.white,
       fontFamily: "Cairo");

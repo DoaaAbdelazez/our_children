@@ -22,8 +22,6 @@ class Assets {
   /// assets/images/splashscreen.png
   static const String assetsImagesSplashscreen =
       "assets/images/splashscreen.png";
-  static const String assetsImagesFrame3 =
-      "assets/images/Frame3.png";
-  static const String assetsImagesFrame4 =
-      "assets/images/Frame4.png";
+  static const String assetsImagesFrame3 = "assets/images/Frame3.png";
+  static const String assetsImagesFrame4 = "assets/images/Frame4.png";
 }
