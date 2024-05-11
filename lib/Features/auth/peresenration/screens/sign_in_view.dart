@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -24,14 +25,14 @@ class SignInView extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           child: CustomScrollView(
             slivers: [
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 60,
+                  height: 60.h,
                 ),
               ),
               //!image
               SliverToBoxAdapter(
-                child: Image.asset(Assets.assetsImagesLogo, height: 170),
+                child: Image.asset(Assets.assetsImagesLogo, height: 170.h),
               ),
 
               // //!Hello text
@@ -48,9 +49,9 @@ class SignInView extends StatelessWidget {
                 ),
               ),
               //!sizedbox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
               ),
 
@@ -82,9 +83,9 @@ class SignInView extends StatelessWidget {
               ),
 
               //!sizedBox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 10,
+                  height: 10.h,
                 ),
               ),
               //!checkBox_Text
@@ -94,8 +95,8 @@ class SignInView extends StatelessWidget {
                     const TermsAndCondationWdget(
                       text: AppStrings.rememberMe,
                     ),
-                    const SizedBox(
-                      width: 160,
+                    SizedBox(
+                      width: 160.w,
                     ),
                     TextButton(
                       onPressed: () {
@@ -112,9 +113,9 @@ class SignInView extends StatelessWidget {
                 ),
               ),
               //!sizedBox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 12,
+                  height: 12.h,
                 ),
               ),
               //!btn
@@ -127,9 +128,9 @@ class SignInView extends StatelessWidget {
                 ),
               ),
               //!sizedBox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 12,
+                  height: 12.h,
                 ),
               ),
               //!HaveAccount

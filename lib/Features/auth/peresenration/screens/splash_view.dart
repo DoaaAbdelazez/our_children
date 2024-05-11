@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 
@@ -35,9 +36,9 @@ class _SplashViewState extends State<SplashView> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(Assets.assetsImagesLogo, width: 200),
-              const SizedBox(
-                height: 10,
+              Image.asset(Assets.assetsImagesLogo, width: 200.w),
+              SizedBox(
+                height: 10.h,
               ),
               Text(
                 AppStrings.appName,

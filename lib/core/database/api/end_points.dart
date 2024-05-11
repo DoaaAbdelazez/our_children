@@ -1,30 +1,31 @@
 class EndPoint {
   static const String baseUrl = 'https://3130-197-54-180-11.ngrok-free.app';
-  static const String chefSignIn = 'auth/login';
-  static const String chefChangePassword = 'chef/change-password';
-  static const String chefDelete = 'chef/delete';
-  static const String chefGet = 'chef/get-chef/';
-  static const String sendCode = 'chef/send-code';
-  static const String changeForgottenPassword =
-      'chef/change-forgotten-password';
-  static const String updateChef = 'chef/update';
-  static const String logout = 'chef/logout';
-  static const String addMeal = 'meal/add-to-menu';
-  static const String updateMeal = 'chef/update-meal/';
-  static const String deleteMeal = 'meal/delete-meal/';
-  static const String getAllMeal = 'meal/get-meals';
+  static const String ourChildrenSignIn = 'auth/login';
+  static const String ourChildrenRegister = 'auth/register';
+  static const String ourChildrenSendForgetCode = 'auth/send-forget-code';
+  static const String ourChildrenResetPassword = 'auth/reset-password';
+  static const String ourChildrenFounPerson = 'person/FoundPerson';
+  static const String ourChildrenLostPerson = 'person/LostPerson';
+  static const String ourChildrengetLostPerson = 'lostPerson/getLost';
+static const String ourChildrenGetAllFound = 'getFound/foundPersons';
+  static const String ourChildrenlogout = 'auth/logout';
+  //   static const String updateChef = 'chef/update';
+  // static const String addMeal = 'meal/add-to-menu';
+  // static const String updateMeal = 'chef/update-meal/';
+  // static const String deleteMeal = 'meal/delete-meal/';
+  
 
-  static String getChefDataEndPoint(id) {
-    return '$chefGet$id';
-  }
+  // static String getChefDataEndPoint(id) {
+  //   return '$chefGet$id';
+  // }
 
-  static String getupdateMealEndPoint(id) {
-    return '$updateMeal$id';
-  }
+  // static String getupdateMealEndPoint(id) {
+  //   return '$updateMeal$id';
+  // }
 
-  static String getdeleteMealEndPoint(id) {
-    return '$updateMeal$id';
-  }
+  // static String getdeleteMealEndPoint(id) {
+  //   return '$updateMeal$id';
+  // }
 }
 
 class ApiKey {

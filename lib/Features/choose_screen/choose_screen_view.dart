@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
@@ -27,24 +28,24 @@ class ChooseScreenView extends StatelessWidget {
                 //!logo
                 Image.asset(
                   Assets.assetsImagesLogo,
-                  width: 200,
+                  width: 200.w,
                 ),
 
-                const SizedBox(
-                  height: 67,
+                SizedBox(
+                  height: 67.h,
                 ),
                 //!buttons
                 CustomButtonChoose(
                     onPressed: () {}, text: AppStrings.searchFamily),
 
-                const SizedBox(
-                  height: 24,
+                SizedBox(
+                  height: 24.h,
                 ),
                 CustomButtonChoose(
                     onPressed: () {}, text: AppStrings.searchTheme),
 
-                const SizedBox(
-                  height: 24,
+                SizedBox(
+                  height: 24.h,
                 ),
                 Row(
                   children: [
@@ -53,8 +54,8 @@ class ChooseScreenView extends StatelessWidget {
                           customReplacementNavigate(context, "/SearchScreen");
                         },
                         text: AppStrings.search),
-                    const SizedBox(
-                      width: 22,
+                    SizedBox(
+                      width: 22.w,
                     ),
                     CustomButtnChoose(
                         onPressed: () {

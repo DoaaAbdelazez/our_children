@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
@@ -31,7 +32,7 @@ class SignUpView extends StatelessWidget {
               ),
               //!image
               SliverToBoxAdapter(
-                child: Image.asset(Assets.assetsImagesLogo, height: 150),
+                child: Image.asset(Assets.assetsImagesLogo, height: 150.h),
               ),
 
               // //!Hello text
@@ -48,9 +49,9 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!sizedbox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 2,
+                  height: 2.h,
                 ),
               ),
               //!name
@@ -106,9 +107,9 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!sizedBox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 5,
+                  height: 5.h,
                 ),
               ),
               //!checkBox_Text
@@ -118,9 +119,9 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!sizedBox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 5,
+                  height: 5.h,
                 ),
               ),
               //!btn
@@ -133,9 +134,9 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!sizedBox
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 12,
+                  height: 12.h,
                 ),
               ),
               //!HaveAccount

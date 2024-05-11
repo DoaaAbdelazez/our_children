@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/Features/auth/peresenration/widgets/custom-text_feild.dart';
 import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
@@ -29,32 +30,32 @@ class ForgetPasswordView extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 60),
                     child: Image.asset(
                       Assets.assetsImagesLogo,
-                      width: 200,
+                      width: 200.w,
                     ),
                   ),
-                  const SizedBox(
-                    height: 54,
+                  SizedBox(
+                    height: 54.h,
                   ),
                   Text(
                     AppStrings.isForgetPassword,
                     style: CustomTextStyle.cairo700style24,
                   ),
-                  const SizedBox(
-                    height: 24,
+                  SizedBox(
+                    height: 24.h,
                   ),
                   Text(
                     AppStrings.pleseWriteEmail,
                     style: CustomTextStyle.cairo400style16,
                   ),
-                  const SizedBox(
-                    height: 24,
+                  SizedBox(
+                    height: 24.h,
                   ),
                   const CustomTextFormField(
                     labeltext: AppStrings.email,
                     prefixIcon: Icon(Icons.email),
                   ),
-                  const SizedBox(
-                    height: 30,
+                  SizedBox(
+                    height: 30.h,
                   ),
                   CustomBtn(
                     onPressed: () {

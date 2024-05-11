@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
@@ -28,8 +29,8 @@ class RulesScreenView extends StatelessWidget {
                   AppStrings.explane,
                   style: CustomTextStyle.AJannatLT400style24,
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 //!sec_text
                 Text(
@@ -39,13 +40,13 @@ class RulesScreenView extends StatelessWidget {
 //!frame1_image
                 Image.asset(
                   Assets.assetsImagesFrame3,
-                  width: 370,
+                  width: 370.w,
                 ),
                 //!frame2_image
-                Image.asset(Assets.assetsImagesFrame4, width: 360),
+                Image.asset(Assets.assetsImagesFrame4, width: 360.w),
 
                 SizedBox(
-                  height: 50,
+                  height: 50.h,
                 ),
                 //!btn
                 Padding(

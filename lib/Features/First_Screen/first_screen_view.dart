@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 import '../../core/functions/navigation.dart';
@@ -26,10 +27,10 @@ class FirstScreenView extends StatelessWidget {
               children: [
                 Image.asset(
                   Assets.assetsImagesLogo,
-                  width: 200,
+                  width: 200.w,
                 ),
-                const SizedBox(
-                  height: 5,
+                SizedBox(
+                  height: 5.h,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 35),
@@ -64,13 +65,13 @@ class FirstScreenView extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  width: 175,
+                SizedBox(
+                  width: 174.w,
                 ),
                 Container(
                   alignment: Alignment.center,
-                  width: 155,
-                  height: 50,
+                  width: 170.w,
+                  height: 50.h,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(25),

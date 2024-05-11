@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 import '../../../../core/functions/navigation.dart';
@@ -30,18 +31,18 @@ class ResetePasswordView extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 35),
                     child: Image.asset(
                       Assets.assetsImagesLogo,
-                      width: 200,
+                      width: 200.w,
                     ),
                   ),
-                  const SizedBox(
-                    height: 40,
+                  SizedBox(
+                    height: 40.h,
                   ),
                   Text(
                     AppStrings.resetPass,
                     style: CustomTextStyle.cairo700style24,
                   ),
-                  const SizedBox(
-                    height: 24,
+                  SizedBox(
+                    height: 24.h,
                   ),
                   const CustomTextFormField(
                     isPassword: true,
@@ -52,8 +53,8 @@ class ResetePasswordView extends StatelessWidget {
                     ),
                     labeltext: AppStrings.newPass,
                   ),
-                  const SizedBox(
-                    height: 16,
+                  SizedBox(
+                    height: 16.h,
                   ),
                   const CustomTextFormField(
                     isPassword: true,
@@ -64,8 +65,8 @@ class ResetePasswordView extends StatelessWidget {
                     ),
                     labeltext: AppStrings.confNewPass,
                   ),
-                  const SizedBox(
-                    height: 16,
+                  SizedBox(
+                    height: 16.h,
                   ),
                   const CustomTextFormField(
                     prefixIcon: Icon(
@@ -74,8 +75,8 @@ class ResetePasswordView extends StatelessWidget {
                     ),
                     labeltext: AppStrings.code,
                   ),
-                  const SizedBox(
-                    height: 24,
+                  SizedBox(
+                    height: 24.h,
                   ),
                   CustomBtn(
                     onPressed: () {

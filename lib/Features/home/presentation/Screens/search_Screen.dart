@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/Features/home/presentation/widgets/custom_check_box_gander.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
@@ -39,14 +40,14 @@ class _SearchScreenState extends State<SearchScreen> {
                       style: CustomTextStyle.cairo400style30,
                     ),
                   ),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: 12.h,
                   ),
                   //!ImagePicker
                   Container(
                     alignment: Alignment.center,
-                    width: 243,
-                    height: 195,
+                    width: 243.w,
+                    height: 195.h,
                     decoration: BoxDecoration(
                         color: AppColors.white,
                         borderRadius: BorderRadius.circular(15)),
@@ -68,8 +69,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: 12.h,
                   ),
                   //!Forms
                   //Name
@@ -77,19 +78,19 @@ class _SearchScreenState extends State<SearchScreen> {
                     AppStrings.nameLose,
                     style: CustomTextStyle.AJannatLT400style24,
                   ),
-                  const SizedBox(height: 65, child: CustomTextForm()),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(height: 65.h, child: const CustomTextForm()),
+                  SizedBox(
+                    height: 12.h,
                   ),
                   //age
                   Text(
                     AppStrings.ageLose,
                     style: CustomTextStyle.AJannatLT400style24,
                   ),
-                  const SizedBox(height: 65, child: CustomTextForm()),
+                  SizedBox(height: 65.h, child: const CustomTextForm()),
 
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: 12.h,
                   ),
                   //Gander
                   Row(
@@ -106,8 +107,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         ],
                       ),
 
-                      const SizedBox(
-                        width: 60,
+                      SizedBox(
+                        width: 60.w,
                       ),
                       //girl
                       Row(
@@ -122,26 +123,26 @@ class _SearchScreenState extends State<SearchScreen> {
                     ],
                   ),
 
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(
+                    height: 12.h,
                   ),
                   //City
                   Text(
                     AppStrings.city,
                     style: CustomTextStyle.AJannatLT400style24,
                   ),
-                  const SizedBox(height: 65, child: CustomTextForm()),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(height: 65.h, child: const CustomTextForm()),
+                  SizedBox(
+                    height: 12.h,
                   ),
                   //Phone number
                   Text(
                     AppStrings.phoneNumber,
                     style: CustomTextStyle.AJannatLT400style24,
                   ),
-                  const SizedBox(height: 65, child: CustomTextForm()),
-                  const SizedBox(
-                    height: 12,
+                  SizedBox(height: 65.h, child: const CustomTextForm()),
+                  SizedBox(
+                    height: 12.h,
                   ),
                   //!bttn
                   CustomButtnHome(
