@@ -95,7 +95,7 @@ class SignInView extends StatelessWidget {
                       text: AppStrings.rememberMe,
                     ),
                     const SizedBox(
-                      width: 168,
+                      width: 160,
                     ),
                     TextButton(
                       onPressed: () {

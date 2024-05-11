@@ -21,7 +21,7 @@ abstract class CustomTextStyle {
       fontFamily: "Inter");
 
   static final almarai400style14 = const TextStyle(
-      fontSize: 16,
+      fontSize: 15,
       fontWeight: FontWeight.w400,
       color: AppColors.black,
       fontFamily: "Almarai");
