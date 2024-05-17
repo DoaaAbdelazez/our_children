@@ -157,8 +157,8 @@ class SignInView extends StatelessWidget {
                                           .signInKey
                                           .currentState!
                                           .validate()) {
-                                        // customReplacementNavigate(
-                                        //     context, "/RulesScreenView");
+                                        customNavigate(
+                                            context, "/RulesScreenView");
                                       }
                                     },
                                     text: AppStrings.login,

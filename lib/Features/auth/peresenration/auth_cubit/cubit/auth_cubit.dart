@@ -24,7 +24,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   void changeLoginPasswordSuffixIcon() {
     isLoginPasswordShowing = !isLoginPasswordShowing;
-    passwordsuffixIcon =
+    loginsuffixIcon =
         isLoginPasswordShowing ? Icons.visibility : Icons.visibility_off;
     emit(ChangeLoginPasswordSuffixIcon());
   }

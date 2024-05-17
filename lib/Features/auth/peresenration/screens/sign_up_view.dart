@@ -181,11 +181,12 @@ class SignUpView extends StatelessWidget {
                             //!btn
                             CustomButton(
                               onPressed: () {
-                                BlocProvider.of<AuthCubit>(context)
+                                if (BlocProvider.of<AuthCubit>(context)
                                     .signUpKey
                                     .currentState!
-                                    .validate();
-                                customNavigate(context, "/SignInView");
+                                    .validate()) {
+                                  customNavigate(context, "/SignInView");
+                                }
                               },
                               text: AppStrings.signup,
                             ),
