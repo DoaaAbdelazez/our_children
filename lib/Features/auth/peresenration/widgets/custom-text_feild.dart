@@ -10,7 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.prefixIcon,
     this.isPassword = false,
     this.suffixIconOnPressed,
-    this.icon, required this.controller, this.validate,
+    this.icon, required this.controller, this.validate, this.keyboardType,
   });
   final String labeltext;
   final Icon prefixIcon;
@@ -19,6 +19,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? Function(String?)? validate;
   final VoidCallback? suffixIconOnPressed;
   final TextEditingController controller;
+  final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
         top: 16,
       ),
       child: TextFormField(
+        keyboardType: keyboardType,
         controller: controller,
         validator: validate,
         obscureText: isPassword,

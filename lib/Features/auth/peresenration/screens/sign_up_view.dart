@@ -69,6 +69,13 @@ class SignUpView extends StatelessWidget {
                           children: [
                             //!name
                             CustomTextFormField(
+                              keyboardType: TextInputType.name,
+                              validate: (data) {
+                                if (data!.isEmpty) {
+                                  return AppStrings.enterName;
+                                }
+                                return null;
+                              },
                               controller: BlocProvider.of<AuthCubit>(context)
                                   .signUpNameController,
                               prefixIcon: const Icon(
@@ -84,8 +91,9 @@ class SignUpView extends StatelessWidget {
 
                             //!Email
                             CustomTextFormField(
+                              keyboardType: TextInputType.emailAddress,
                               controller: BlocProvider.of<AuthCubit>(context)
-                                  .signUpEmailController,
+                                  .signInEmailController,
                               prefixIcon: const Icon(
                                 Icons.email_outlined,
                                 color: AppColors.black,
@@ -105,26 +113,27 @@ class SignUpView extends StatelessWidget {
                             ),
                             //!password
                             CustomTextFormField(
+                              validate: (data) {
+                                if (data!.length < 6 || data.isEmpty) {
+                                  return AppStrings.shouldpassword;
+                                }
+                                return null;
+                              },
                               controller: BlocProvider.of<AuthCubit>(context)
-                                  .signUpPasswordController,
-                              isPassword: BlocProvider.of<AuthCubit>(context).isSignUpPasswordShowing,
+                                  .signInPasswordController,
+                              isPassword: BlocProvider.of<AuthCubit>(context)
+                                  .isSignUpPasswordShowing,
                               icon: BlocProvider.of<AuthCubit>(context)
-                                  .suffixIcon,
-                              // suffixIconOnPressed: () {
-                              //   BlocProvider.of<AuthCubit>(context)
-                              //       .changeLoginPasswordSuffixIcon();
-                              // },
+                                  .passwordsuffixIcon,
+                              suffixIconOnPressed: () {
+                                BlocProvider.of<AuthCubit>(context)
+                                    .changeSignUpPasswordSuffixIcon();
+                              },
                               prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: AppColors.black,
                               ),
                               labeltext: AppStrings.password,
-                              validate: (data) {
-                                if (data!.length < 6 || data.isEmpty) {
-                                  return AppStrings.enterValidPassword;
-                                }
-                                return null;
-                              },
                             ),
                             //!SizedBox
                             SizedBox(
@@ -132,45 +141,51 @@ class SignUpView extends StatelessWidget {
                             ),
                             //!conf_pass
                             CustomTextFormField(
+                              validate: (data) {
+                                if (BlocProvider.of<AuthCubit>(context)
+                                        .signUpConfPasswordController
+                                        .text !=
+                                    BlocProvider.of<AuthCubit>(context)
+                                        .signInPasswordController
+                                        .text) {
+                                  return AppStrings.thePasswordNotMatch;
+                                }
+                                return null;
+                              },
                               controller: BlocProvider.of<AuthCubit>(context)
                                   .signUpConfPasswordController,
-                              isPassword: BlocProvider.of<AuthCubit>(context).isSignUpPasswordShowing,
+                              isPassword: BlocProvider.of<AuthCubit>(context)
+                                  .isSignUpConfPasswordShowing,
                               icon: BlocProvider.of<AuthCubit>(context)
-                                  .suffixIcon,
-                              // suffixIconOnPressed: () {
-                              //   BlocProvider.of<AuthCubit>(context)
-                              //       .changeLoginPasswordSuffixIcon();
-                              // },
+                                  .confPassowrdsuffixIcon,
+                              suffixIconOnPressed: () {
+                                BlocProvider.of<AuthCubit>(context)
+                                    .changeSignUpConfPasswordSuffixIcon();
+                              },
                               prefixIcon: const Icon(
                                 Icons.lock_outline,
                                 color: AppColors.black,
                               ),
                               labeltext: AppStrings.confPassword,
-                              validate: (data) {
-                                if (data!.length < 6 || data.isEmpty) {
-                                  return AppStrings.enterValidPassword;
-                                }
-                                return null;
-                              },
                             ),
                             //!sizedBox
+
                             SizedBox(
                               height: 5.h,
                             ),
                             //!checkBox_Text
+
                             const TermsAndCondationWdget(
                               text: AppStrings.accept,
                             ),
                             //!btn
                             CustomButton(
                               onPressed: () {
-                                if (BlocProvider.of<AuthCubit>(context)
+                                BlocProvider.of<AuthCubit>(context)
                                     .signUpKey
                                     .currentState!
-                                    .validate()) {
-                                  customReplacementNavigate(
-                                      context, "/RulesScreenView");
-                                }
+                                    .validate();
+                                customNavigate(context, "/SignInView");
                               },
                               text: AppStrings.signup,
                             ),

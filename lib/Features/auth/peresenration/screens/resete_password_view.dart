@@ -44,10 +44,11 @@ class ResetePasswordView extends StatelessWidget {
                   SizedBox(
                     height: 24.h,
                   ),
-                   CustomTextFormField(
+                  //!Password
+                  CustomTextFormField(
                     controller: TextEditingController(),
                     isPassword: true,
-                    icon: Icons.remove_red_eye,
+                    icon: Icons.visibility,
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: AppColors.black,
@@ -57,10 +58,11 @@ class ResetePasswordView extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                   CustomTextFormField(
+                  //!conf_pass
+                  CustomTextFormField(
                     controller: TextEditingController(),
                     isPassword: true,
-                    icon: Icons.remove_red_eye,
+                    icon: Icons.visibility,
                     prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: AppColors.black,
@@ -70,7 +72,9 @@ class ResetePasswordView extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                   CustomTextFormField(
+                  //!code
+                  CustomTextFormField(
+                    keyboardType: TextInputType.number,
                     controller: TextEditingController(),
                     prefixIcon: const Icon(
                       Icons.code,
@@ -83,7 +87,7 @@ class ResetePasswordView extends StatelessWidget {
                   ),
                   CustomBtn(
                     onPressed: () {
-                      customReplacementNavigate(context, "/ResetePasswordView");
+                      customNavigate(context, "/ResetePasswordView");
                     },
                     text: AppStrings.resetPass,
                   )

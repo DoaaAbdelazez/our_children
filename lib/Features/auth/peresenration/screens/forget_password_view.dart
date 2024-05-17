@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_cubit.dart';
+import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
 import 'package:our_children/Features/auth/peresenration/widgets/custom-text_feild.dart';
 import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
@@ -50,17 +53,41 @@ class ForgetPasswordView extends StatelessWidget {
                   SizedBox(
                     height: 24.h,
                   ),
-                   CustomTextFormField(
-                    controller: TextEditingController(),
-                    labeltext: AppStrings.email,
-                    prefixIcon: const Icon(Icons.email),
+                  //!email
+                  BlocConsumer<AuthCubit, AuthState>(
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      return Form(
+                        key: BlocProvider.of<AuthCubit>(context)
+                            .forgetPasswordKey,
+                        child: CustomTextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: BlocProvider.of<AuthCubit>(context)
+                              .forgetPasswordEmailController,
+                          labeltext: AppStrings.email,
+                          prefixIcon: const Icon(Icons.email),
+                          validate: (data) {
+                            if (data!.isEmpty || !data.contains('@gmail.com')) {
+                              return AppStrings.enterValidEmail;
+                            }
+                            return null;
+                          },
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(
                     height: 30.h,
                   ),
                   CustomBtn(
                     onPressed: () {
-                      customReplacementNavigate(context, "/ResetePasswordView");
+                      BlocProvider.of<AuthCubit>(context)
+                          .forgetPasswordKey
+                          .currentState!
+                          .validate();
+                      {
+                        customNavigate(context, "/ResetePasswordView");
+                      }
                     },
                     text: AppStrings.sendCode,
                   ),

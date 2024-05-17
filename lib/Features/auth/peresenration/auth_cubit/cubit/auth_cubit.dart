@@ -6,21 +6,40 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   GlobalKey<FormState> signInKey = GlobalKey();
   GlobalKey<FormState> signUpKey = GlobalKey();
+  GlobalKey<FormState> forgetPasswordKey = GlobalKey();
   TextEditingController signInEmailController = TextEditingController();
   TextEditingController signInPasswordController = TextEditingController();
-  bool isLoginPasswordShowing = true;
-  TextEditingController signUpEmailController = TextEditingController();
   TextEditingController signUpNameController = TextEditingController();
-  TextEditingController signUpController = TextEditingController();
+  TextEditingController signUpEmailController = TextEditingController();
   TextEditingController signUpPasswordController = TextEditingController();
   TextEditingController signUpConfPasswordController = TextEditingController();
+  TextEditingController forgetPasswordEmailController = TextEditingController();
+
+  bool isLoginPasswordShowing = true;
   bool isSignUpPasswordShowing = true;
-  IconData suffixIcon = Icons.visibility;
+  bool isSignUpConfPasswordShowing = true;
+  IconData loginsuffixIcon = Icons.visibility;
+  IconData passwordsuffixIcon = Icons.visibility;
+  IconData confPassowrdsuffixIcon = Icons.visibility;
 
   void changeLoginPasswordSuffixIcon() {
     isLoginPasswordShowing = !isLoginPasswordShowing;
-    suffixIcon =
+    passwordsuffixIcon =
         isLoginPasswordShowing ? Icons.visibility : Icons.visibility_off;
-    emit(ChangeloginPasswordSuffixIcon());
+    emit(ChangeLoginPasswordSuffixIcon());
+  }
+
+  void changeSignUpPasswordSuffixIcon() {
+    isSignUpPasswordShowing = !isSignUpPasswordShowing;
+    passwordsuffixIcon =
+        isSignUpPasswordShowing ? Icons.visibility : Icons.visibility_off;
+    emit(ChangeSignUpPasswordSuffixIcon());
+  }
+
+  void changeSignUpConfPasswordSuffixIcon() {
+    isSignUpConfPasswordShowing = !isSignUpConfPasswordShowing;
+    confPassowrdsuffixIcon =
+        isSignUpConfPasswordShowing ? Icons.visibility : Icons.visibility_off;
+    emit(ChangeSignUpConfPasswordSuffixIcon());
   }
 }

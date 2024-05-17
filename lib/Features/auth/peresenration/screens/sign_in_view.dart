@@ -10,6 +10,7 @@ import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/widgets/custom_loading_indicator.dart';
 import '../../../../core/widgets/custome_button.dart';
+
 import '../widgets/custom-text_feild.dart';
 import '../widgets/terms_and_condation.dart';
 
@@ -71,6 +72,7 @@ class SignInView extends StatelessWidget {
                           children: [
                             //!Email
                             CustomTextFormField(
+                              keyboardType: TextInputType.emailAddress,
                               controller: BlocProvider.of<AuthCubit>(context)
                                   .signInEmailController,
                               validate: (data) {
@@ -97,7 +99,7 @@ class SignInView extends StatelessWidget {
                               isPassword: BlocProvider.of<AuthCubit>(context)
                                   .isLoginPasswordShowing,
                               icon: BlocProvider.of<AuthCubit>(context)
-                                  .suffixIcon,
+                                  .loginsuffixIcon,
                               suffixIconOnPressed: () {
                                 BlocProvider.of<AuthCubit>(context)
                                     .changeLoginPasswordSuffixIcon();
