@@ -5,12 +5,19 @@ import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_s
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   GlobalKey<FormState> signInKey = GlobalKey();
+  GlobalKey<FormState> signUpKey = GlobalKey();
   TextEditingController signInEmailController = TextEditingController();
   TextEditingController signInPasswordController = TextEditingController();
   bool isLoginPasswordShowing = true;
+  TextEditingController signUpEmailController = TextEditingController();
+  TextEditingController signUpNameController = TextEditingController();
+  TextEditingController signUpController = TextEditingController();
+  TextEditingController signUpPasswordController = TextEditingController();
+  TextEditingController signUpConfPasswordController = TextEditingController();
+  bool isSignUpPasswordShowing = true;
   IconData suffixIcon = Icons.visibility;
 
-  void changeloginPasswordSuffixIcon() {
+  void changeLoginPasswordSuffixIcon() {
     isLoginPasswordShowing = !isLoginPasswordShowing;
     suffixIcon =
         isLoginPasswordShowing ? Icons.visibility : Icons.visibility_off;

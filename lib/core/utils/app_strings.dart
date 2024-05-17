@@ -39,4 +39,6 @@ abstract class AppStrings {
   static const String city = "المحافظة";
   static const String phoneNumber = "رقم التلفون";
   static const String done = "تم";
+  static const String enterValidPassword = "برجاء كتابة كلمة السر الصحيحه";
+  static const String enterValidEmail = "برجاء كتابة البريد الاكتروني الصحيح";
 }

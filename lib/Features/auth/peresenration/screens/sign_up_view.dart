@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_cubit.dart';
+import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
@@ -54,89 +57,131 @@ class SignUpView extends StatelessWidget {
                   height: 2.h,
                 ),
               ),
-              //!name
+              //!Form Field
               SliverToBoxAdapter(
                 child: Center(
-                  child: CustomTextFormField(
-                    controller: TextEditingController(),
-                    prefixIcon: const Icon(
-                      Icons.person,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.enterYourName,
+                  child: BlocConsumer<AuthCubit, AuthState>(
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      return Form(
+                        key: BlocProvider.of<AuthCubit>(context).signUpKey,
+                        child: Column(
+                          children: [
+                            //!name
+                            CustomTextFormField(
+                              controller: BlocProvider.of<AuthCubit>(context)
+                                  .signUpNameController,
+                              prefixIcon: const Icon(
+                                Icons.person,
+                                color: AppColors.black,
+                              ),
+                              labeltext: AppStrings.enterYourName,
+                            ),
+                            //!SizedBox
+                            SizedBox(
+                              height: 16.h,
+                            ),
+
+                            //!Email
+                            CustomTextFormField(
+                              controller: BlocProvider.of<AuthCubit>(context)
+                                  .signUpEmailController,
+                              prefixIcon: const Icon(
+                                Icons.email_outlined,
+                                color: AppColors.black,
+                              ),
+                              labeltext: AppStrings.email,
+                              validate: (data) {
+                                if (data!.isEmpty ||
+                                    !data.contains('@gmail.com')) {
+                                  return AppStrings.enterValidEmail;
+                                }
+                                return null;
+                              },
+                            ),
+                            //!SizedBox
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                            //!password
+                            CustomTextFormField(
+                              controller: BlocProvider.of<AuthCubit>(context)
+                                  .signUpPasswordController,
+                              isPassword: BlocProvider.of<AuthCubit>(context).isSignUpPasswordShowing,
+                              icon: BlocProvider.of<AuthCubit>(context)
+                                  .suffixIcon,
+                              // suffixIconOnPressed: () {
+                              //   BlocProvider.of<AuthCubit>(context)
+                              //       .changeLoginPasswordSuffixIcon();
+                              // },
+                              prefixIcon: const Icon(
+                                Icons.lock_outline,
+                                color: AppColors.black,
+                              ),
+                              labeltext: AppStrings.password,
+                              validate: (data) {
+                                if (data!.length < 6 || data.isEmpty) {
+                                  return AppStrings.enterValidPassword;
+                                }
+                                return null;
+                              },
+                            ),
+                            //!SizedBox
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                            //!conf_pass
+                            CustomTextFormField(
+                              controller: BlocProvider.of<AuthCubit>(context)
+                                  .signUpConfPasswordController,
+                              isPassword: BlocProvider.of<AuthCubit>(context).isSignUpPasswordShowing,
+                              icon: BlocProvider.of<AuthCubit>(context)
+                                  .suffixIcon,
+                              // suffixIconOnPressed: () {
+                              //   BlocProvider.of<AuthCubit>(context)
+                              //       .changeLoginPasswordSuffixIcon();
+                              // },
+                              prefixIcon: const Icon(
+                                Icons.lock_outline,
+                                color: AppColors.black,
+                              ),
+                              labeltext: AppStrings.confPassword,
+                              validate: (data) {
+                                if (data!.length < 6 || data.isEmpty) {
+                                  return AppStrings.enterValidPassword;
+                                }
+                                return null;
+                              },
+                            ),
+                            //!sizedBox
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            //!checkBox_Text
+                            const TermsAndCondationWdget(
+                              text: AppStrings.accept,
+                            ),
+                            //!btn
+                            CustomButton(
+                              onPressed: () {
+                                if (BlocProvider.of<AuthCubit>(context)
+                                    .signUpKey
+                                    .currentState!
+                                    .validate()) {
+                                  customReplacementNavigate(
+                                      context, "/RulesScreenView");
+                                }
+                              },
+                              text: AppStrings.signup,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
-              //!Email
-              SliverToBoxAdapter(
-                child: Center(
-                  child: CustomTextFormField(
-                    controller: TextEditingController(),
-                    prefixIcon: const Icon(
-                      Icons.email_outlined,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.email,
-                  ),
-                ),
-              ),
-              //!password
-              SliverToBoxAdapter(
-                child: Center(
-                  child: CustomTextFormField(
-                    controller: TextEditingController(),
-                    isPassword: true,
-                    icon: Icons.remove_red_eye,
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.password,
-                  ),
-                ),
-              ),
-              //!conf_pass
-              SliverToBoxAdapter(
-                child: Center(
-                  child: CustomTextFormField(
-                    controller: TextEditingController(),
-                    isPassword: true,
-                    icon: Icons.remove_red_eye,
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.confPassword,
-                  ),
-                ),
-              ),
-              //!sizedBox
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 5.h,
-                ),
-              ),
-              //!checkBox_Text
-              const SliverToBoxAdapter(
-                child: TermsAndCondationWdget(
-                  text: AppStrings.accept,
-                ),
-              ),
-              //!sizedBox
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 5.h,
-                ),
-              ),
-              //!btn
-              SliverToBoxAdapter(
-                child: CustomButton(
-                  onPressed: () {
-                    customReplacementNavigate(context, "/SignInView");
-                  },
-                  text: AppStrings.signup,
-                ),
-              ),
+
               //!sizedBox
               SliverToBoxAdapter(
                 child: SizedBox(
