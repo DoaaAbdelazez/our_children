@@ -44,10 +44,11 @@ class ResetePasswordView extends StatelessWidget {
                   SizedBox(
                     height: 24.h,
                   ),
-                  const CustomTextFormField(
+                   CustomTextFormField(
+                    controller: TextEditingController(),
                     isPassword: true,
                     icon: Icons.remove_red_eye,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: AppColors.black,
                     ),
@@ -56,10 +57,11 @@ class ResetePasswordView extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                  const CustomTextFormField(
+                   CustomTextFormField(
+                    controller: TextEditingController(),
                     isPassword: true,
                     icon: Icons.remove_red_eye,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: AppColors.black,
                     ),
@@ -68,8 +70,9 @@ class ResetePasswordView extends StatelessWidget {
                   SizedBox(
                     height: 16.h,
                   ),
-                  const CustomTextFormField(
-                    prefixIcon: Icon(
+                   CustomTextFormField(
+                    controller: TextEditingController(),
+                    prefixIcon: const Icon(
                       Icons.code,
                       color: AppColors.black,
                     ),

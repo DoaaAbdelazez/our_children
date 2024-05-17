@@ -50,9 +50,10 @@ class ForgetPasswordView extends StatelessWidget {
                   SizedBox(
                     height: 24.h,
                   ),
-                  const CustomTextFormField(
+                   CustomTextFormField(
+                    controller: TextEditingController(),
                     labeltext: AppStrings.email,
-                    prefixIcon: Icon(Icons.email),
+                    prefixIcon: const Icon(Icons.email),
                   ),
                   SizedBox(
                     height: 30.h,

@@ -27,7 +27,7 @@ class RulesScreenView extends StatelessWidget {
                 //!First text
                 Text(
                   AppStrings.explane,
-                  style: CustomTextStyle.AJannatLT400style24,
+                  style: CustomTextStyle.aJannatLT400style24,
                 ),
                 SizedBox(
                   height: 10.h,
@@ -35,7 +35,7 @@ class RulesScreenView extends StatelessWidget {
                 //!sec_text
                 Text(
                   AppStrings.explane2,
-                  style: CustomTextStyle.AJannatLT400style24,
+                  style: CustomTextStyle.aJannatLT400style24,
                 ),
 //!frame1_image
                 Image.asset(

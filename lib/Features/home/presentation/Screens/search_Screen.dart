@@ -76,7 +76,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   //Name
                   Text(
                     AppStrings.nameLose,
-                    style: CustomTextStyle.AJannatLT400style24,
+                    style: CustomTextStyle.aJannatLT400style24,
                   ),
                   SizedBox(height: 65.h, child: const CustomTextForm()),
                   SizedBox(
@@ -85,7 +85,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   //age
                   Text(
                     AppStrings.ageLose,
-                    style: CustomTextStyle.AJannatLT400style24,
+                    style: CustomTextStyle.aJannatLT400style24,
                   ),
                   SizedBox(height: 65.h, child: const CustomTextForm()),
 
@@ -102,7 +102,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           const CustomCheckBoxGander(),
                           Text(
                             AppStrings.boy,
-                            style: CustomTextStyle.AJannatLT400style24,
+                            style: CustomTextStyle.aJannatLT400style24,
                           ),
                         ],
                       ),
@@ -116,7 +116,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           const CustomCheckBoxGander(),
                           Text(
                             AppStrings.girl,
-                            style: CustomTextStyle.AJannatLT400style24,
+                            style: CustomTextStyle.aJannatLT400style24,
                           ),
                         ],
                       ),
@@ -129,7 +129,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   //City
                   Text(
                     AppStrings.city,
-                    style: CustomTextStyle.AJannatLT400style24,
+                    style: CustomTextStyle.aJannatLT400style24,
                   ),
                   SizedBox(height: 65.h, child: const CustomTextForm()),
                   SizedBox(
@@ -138,7 +138,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   //Phone number
                   Text(
                     AppStrings.phoneNumber,
-                    style: CustomTextStyle.AJannatLT400style24,
+                    style: CustomTextStyle.aJannatLT400style24,
                   ),
                   SizedBox(height: 65.h, child: const CustomTextForm()),
                   SizedBox(

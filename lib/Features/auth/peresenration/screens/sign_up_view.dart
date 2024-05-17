@@ -55,10 +55,11 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!name
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: Center(
                   child: CustomTextFormField(
-                    prefixIcon: Icon(
+                    controller: TextEditingController(),
+                    prefixIcon: const Icon(
                       Icons.person,
                       color: AppColors.black,
                     ),
@@ -67,10 +68,11 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!Email
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: Center(
                   child: CustomTextFormField(
-                    prefixIcon: Icon(
+                    controller: TextEditingController(),
+                    prefixIcon: const Icon(
                       Icons.email_outlined,
                       color: AppColors.black,
                     ),
@@ -79,12 +81,13 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!password
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: Center(
                   child: CustomTextFormField(
+                    controller: TextEditingController(),
                     isPassword: true,
                     icon: Icons.remove_red_eye,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: AppColors.black,
                     ),
@@ -93,12 +96,13 @@ class SignUpView extends StatelessWidget {
                 ),
               ),
               //!conf_pass
-              const SliverToBoxAdapter(
+              SliverToBoxAdapter(
                 child: Center(
                   child: CustomTextFormField(
+                    controller: TextEditingController(),
                     isPassword: true,
                     icon: Icons.remove_red_eye,
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.lock_outline,
                       color: AppColors.black,
                     ),
