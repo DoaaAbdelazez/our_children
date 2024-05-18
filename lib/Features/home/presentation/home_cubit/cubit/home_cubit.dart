@@ -6,8 +6,14 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   GlobalKey<FormState> searchKey = GlobalKey();
-  TextEditingController nameSearchController = TextEditingController();
-  TextEditingController ageSearchController = TextEditingController();
-  TextEditingController citySearchController = TextEditingController();
-  TextEditingController phoneSearchController = TextEditingController();
+  GlobalKey<FormState> reportKey = GlobalKey();
+  TextEditingController nameReportController = TextEditingController();
+  TextEditingController ageReportController = TextEditingController();
+  TextEditingController cityReportController = TextEditingController();
+  TextEditingController phoneReportController = TextEditingController();
+  String groupValue = 'boy';
+  void changeGroupVal(val) {
+    groupValue = val;
+    emit(ChangeGroupState());
+  }
 }

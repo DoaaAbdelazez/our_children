@@ -35,14 +35,11 @@ class ChooseScreenView extends StatelessWidget {
                   height: 67.h,
                 ),
                 //!buttons
-                CustomButtonChoose(
-                    onPressed: () {}, text: AppStrings.searchFamily),
-
                 SizedBox(
                   height: 24.h,
                 ),
                 CustomButtonChoose(
-                    onPressed: () {}, text: AppStrings.searchTheme),
+                    onPressed: () {}, text: AppStrings.searchFamily),
 
                 SizedBox(
                   height: 24.h,
@@ -51,7 +48,7 @@ class ChooseScreenView extends StatelessWidget {
                   children: [
                     CustomButtnChoose(
                         onPressed: () {
-                          customReplacementNavigate(context, "/SearchScreen");
+                          customNavigate(context, "/SearchScreen");
                         },
                         text: AppStrings.search),
                     SizedBox(
@@ -59,7 +56,7 @@ class ChooseScreenView extends StatelessWidget {
                     ),
                     CustomButtnChoose(
                         onPressed: () {
-                          customReplacementNavigate(context, "/ReportScreen");
+                          customNavigate(context, "/ReportScreen");
                         },
                         text: AppStrings.report)
                   ],
