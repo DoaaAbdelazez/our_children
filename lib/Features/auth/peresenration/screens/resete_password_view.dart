@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_cubit.dart';
+import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 import '../../../../core/functions/navigation.dart';
@@ -45,57 +48,110 @@ class ResetePasswordView extends StatelessWidget {
                     height: 24.h,
                   ),
                   //!Form
-                  Column(
-                    children: [
-                      //!Password
-                      CustomTextFormField(
-                        controller: TextEditingController(),
-                        isPassword: true,
-                        icon: Icons.visibility,
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: AppColors.black,
+                  BlocConsumer<AuthCubit, AuthState>(
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      return Form(
+                        key: BlocProvider.of<AuthCubit>(context)
+                            .resetPasswordKey,
+                        child: Column(
+                          children: [
+                            //!Password
+                            CustomTextFormField(
+                              validate: (data) {
+                                if (data!.length < 6 || data.isEmpty) {
+                                  return AppStrings.shouldpassword;
+                                }
+                                return null;
+                              },
+                              controller: BlocProvider.of<AuthCubit>(context)
+                                  .resetPasswordController,
+                              isPassword: BlocProvider.of<AuthCubit>(context)
+                                  .isresetPasswordShowing,
+                              icon: BlocProvider.of<AuthCubit>(context)
+                                  .resetPasswordsuffixIcon,
+                              suffixIconOnPressed: () {
+                                BlocProvider.of<AuthCubit>(context)
+                                    .changeResetPasswordSuffixIcon();
+                              },
+                              prefixIcon: const Icon(
+                                Icons.lock_outline,
+                                color: AppColors.black,
+                              ),
+                              labeltext: AppStrings.newPass,
+                            ),
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                            //!conf_pass
+                            CustomTextFormField(
+                              validate: (data) {
+                                if (BlocProvider.of<AuthCubit>(context)
+                                        .resetConfPasswordController
+                                        .text !=
+                                    BlocProvider.of<AuthCubit>(context)
+                                        .resetPasswordController
+                                        .text) {
+                                  return AppStrings.thePasswordNotMatch;
+                                }
+                                return null;
+                              },
+                              controller: BlocProvider.of<AuthCubit>(context)
+                                  .resetConfPasswordController,
+                              isPassword: BlocProvider.of<AuthCubit>(context)
+                                  .isresetConfPasswordShowing,
+                              icon: BlocProvider.of<AuthCubit>(context)
+                                  .resetConfPassowrdsuffixIcon,
+                              suffixIconOnPressed: () {
+                                BlocProvider.of<AuthCubit>(context)
+                                    .changeResetConfPasswordSuffixIcon();
+                              },
+                              prefixIcon: const Icon(
+                                Icons.lock_outline,
+                                color: AppColors.black,
+                              ),
+                              labeltext: AppStrings.confNewPass,
+                            ),
+                            SizedBox(
+                              height: 16.h,
+                            ),
+                            //!code
+                            CustomTextFormField(
+                              validate: (data) {
+                                if (data!.isEmpty) {
+                                  return AppStrings.enterCode;
+                                }
+                                return null;
+                              },
+                              keyboardType: TextInputType.number,
+                              controller: BlocProvider.of<AuthCubit>(context)
+                                  .resetCodeController,
+                              prefixIcon: const Icon(
+                                Icons.code,
+                                color: AppColors.black,
+                              ),
+                              labeltext: AppStrings.code,
+                            ),
+                            SizedBox(
+                              height: 24.h,
+                            ),
+                            //!btn
+                            CustomBtn(
+                              onPressed: () {
+                                if (BlocProvider.of<AuthCubit>(context)
+                                    .resetPasswordKey
+                                    .currentState!
+                                    .validate()) {
+                                  customReplacementNavigate(
+                                      context, "/SignInView");
+                                }
+                              },
+                              text: AppStrings.resetPass,
+                            ),
+                          ],
                         ),
-                        labeltext: AppStrings.newPass,
-                      ),
-                      SizedBox(
-                        height: 16.h,
-                      ),
-                      //!conf_pass
-                      CustomTextFormField(
-                        controller: TextEditingController(),
-                        isPassword: true,
-                        icon: Icons.visibility,
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: AppColors.black,
-                        ),
-                        labeltext: AppStrings.confNewPass,
-                      ),
-                      SizedBox(
-                        height: 16.h,
-                      ),
-//!code
-                      CustomTextFormField(
-                        keyboardType: TextInputType.number,
-                        controller: TextEditingController(),
-                        prefixIcon: const Icon(
-                          Icons.code,
-                          color: AppColors.black,
-                        ),
-                        labeltext: AppStrings.code,
-                      ),
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      //!btn
-                      CustomBtn(
-                        onPressed: () {
-                          customReplacementNavigate(context, "/SignInView");
-                        },
-                        text: AppStrings.resetPass,
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ],
               ),

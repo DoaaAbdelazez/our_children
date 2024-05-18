@@ -18,7 +18,6 @@ class CustomTextForm extends StatelessWidget {
         top: 16,
       ),
       child: TextFormField(
-        
         controller: controller,
         validator: validate,
         cursorColor: AppColors.black,
@@ -29,7 +28,7 @@ class CustomTextForm extends StatelessWidget {
           border: getBorderStyle(),
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),
-          errorBorder: getBorderStyle(),
+          // errorBorder: getBorderStyle(),
         ),
       ),
     );
@@ -38,7 +37,6 @@ class CustomTextForm extends StatelessWidget {
 
 OutlineInputBorder getBorderStyle() {
   return OutlineInputBorder(
-    
     borderRadius: BorderRadius.circular(15),
     borderSide: const BorderSide(color: AppColors.black, strokeAlign: 3),
   );

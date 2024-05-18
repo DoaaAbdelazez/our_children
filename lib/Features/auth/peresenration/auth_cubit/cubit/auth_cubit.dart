@@ -6,6 +6,7 @@ class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitialState());
   GlobalKey<FormState> signInKey = GlobalKey();
   GlobalKey<FormState> signUpKey = GlobalKey();
+  GlobalKey<FormState> resetPasswordKey = GlobalKey();
   GlobalKey<FormState> forgetPasswordKey = GlobalKey();
   TextEditingController signInEmailController = TextEditingController();
   TextEditingController signInPasswordController = TextEditingController();
@@ -14,13 +15,20 @@ class AuthCubit extends Cubit<AuthState> {
   TextEditingController signUpPasswordController = TextEditingController();
   TextEditingController signUpConfPasswordController = TextEditingController();
   TextEditingController forgetPasswordEmailController = TextEditingController();
+  TextEditingController resetPasswordController = TextEditingController();
+  TextEditingController resetConfPasswordController = TextEditingController();
+  TextEditingController resetCodeController = TextEditingController();
 
   bool isLoginPasswordShowing = true;
   bool isSignUpPasswordShowing = true;
   bool isSignUpConfPasswordShowing = true;
+  bool isresetPasswordShowing = true;
+  bool isresetConfPasswordShowing = true;
   IconData loginsuffixIcon = Icons.visibility;
   IconData passwordsuffixIcon = Icons.visibility;
   IconData confPassowrdsuffixIcon = Icons.visibility;
+  IconData resetPasswordsuffixIcon = Icons.visibility;
+  IconData resetConfPassowrdsuffixIcon = Icons.visibility;
 
   void changeLoginPasswordSuffixIcon() {
     isLoginPasswordShowing = !isLoginPasswordShowing;
@@ -41,5 +49,19 @@ class AuthCubit extends Cubit<AuthState> {
     confPassowrdsuffixIcon =
         isSignUpConfPasswordShowing ? Icons.visibility : Icons.visibility_off;
     emit(ChangeSignUpConfPasswordSuffixIcon());
+  }
+
+  void changeResetPasswordSuffixIcon() {
+    isresetPasswordShowing = !isresetPasswordShowing;
+    resetPasswordsuffixIcon =
+        isresetPasswordShowing ? Icons.visibility : Icons.visibility_off;
+    emit(ChangeResetPasswordSuffixIcon());
+  }
+
+  void changeResetConfPasswordSuffixIcon() {
+    isresetConfPasswordShowing = !isresetConfPasswordShowing;
+    resetConfPassowrdsuffixIcon =
+        isresetConfPasswordShowing ? Icons.visibility : Icons.visibility_off;
+    emit(ChangeResetConfPasswordSuffixIcon());
   }
 }

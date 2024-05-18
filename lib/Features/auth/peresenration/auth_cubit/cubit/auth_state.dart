@@ -7,6 +7,8 @@ final class ChangeLoginPasswordSuffixIcon extends AuthState {}
 final class ChangeSignUpConfPasswordSuffixIcon extends AuthState {}
 
 final class ChangeSignUpPasswordSuffixIcon extends AuthState {}
+final class ChangeResetPasswordSuffixIcon extends AuthState {}
+final class ChangeResetConfPasswordSuffixIcon extends AuthState {}
 
 final class SignInLoadingState extends AuthState {}
 
@@ -25,3 +27,8 @@ final class ForgetPasswordLoadingState extends AuthState {}
 final class ForgetPasswordSucessState extends AuthState {}
 
 final class ForgetPasswordErrorState extends AuthState {}
+final class ResetPasswordLoadingState extends AuthState {}
+
+final class ResetPasswordSucessState extends AuthState {}
+
+final class ResetPasswordErrorState extends AuthState {}

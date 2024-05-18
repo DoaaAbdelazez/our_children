@@ -86,7 +86,8 @@ class ForgetPasswordView extends StatelessWidget {
                           .currentState!
                           .validate();
                       {
-                        customNavigate(context, "/ResetePasswordView");
+                        customReplacementNavigate(
+                            context, "/ResetePasswordView");
                       }
                     },
                     text: AppStrings.sendCode,
