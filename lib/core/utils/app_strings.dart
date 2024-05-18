@@ -41,8 +41,11 @@ abstract class AppStrings {
   static const String done = "تم";
   static const String enterValidPassword = "برجاء كتابة كلمة السر الصحيحه";
   static const String enterValidEmail = "برجاء كتابة البريد الاكتروني الصحيح";
-  static const String enterName = "برجاء كتابة الاسم";
+  static const String enterName = "يرجى كتابة الاسم";
   static const String thePasswordNotMatch = "كلمة السر غير متطابقة";
+  static const String enterAge = "يرجى كتابة سن المفقود";
+  static const String enterCity = "يرجى كتابة المحافظة";
+  static const String enterPhone = "يرجى كتابة رقم الهاتف";
   static const String shouldpassword =
       "يجب ألا تقل كلمة السر عن ٦ حروف أو ارقام";
 }

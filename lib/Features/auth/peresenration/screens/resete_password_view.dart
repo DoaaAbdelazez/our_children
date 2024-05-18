@@ -44,53 +44,59 @@ class ResetePasswordView extends StatelessWidget {
                   SizedBox(
                     height: 24.h,
                   ),
-                  //!Password
-                  CustomTextFormField(
-                    controller: TextEditingController(),
-                    isPassword: true,
-                    icon: Icons.visibility,
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.newPass,
+                  //!Form
+                  Column(
+                    children: [
+                      //!Password
+                      CustomTextFormField(
+                        controller: TextEditingController(),
+                        isPassword: true,
+                        icon: Icons.visibility,
+                        prefixIcon: const Icon(
+                          Icons.lock_outline,
+                          color: AppColors.black,
+                        ),
+                        labeltext: AppStrings.newPass,
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      //!conf_pass
+                      CustomTextFormField(
+                        controller: TextEditingController(),
+                        isPassword: true,
+                        icon: Icons.visibility,
+                        prefixIcon: const Icon(
+                          Icons.lock_outline,
+                          color: AppColors.black,
+                        ),
+                        labeltext: AppStrings.confNewPass,
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+//!code
+                      CustomTextFormField(
+                        keyboardType: TextInputType.number,
+                        controller: TextEditingController(),
+                        prefixIcon: const Icon(
+                          Icons.code,
+                          color: AppColors.black,
+                        ),
+                        labeltext: AppStrings.code,
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
+                      //!btn
+                      CustomBtn(
+                        onPressed: () {
+                          customReplacementNavigate(context, "/SignInView");
+                        },
+                        text: AppStrings.resetPass,
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  //!conf_pass
-                  CustomTextFormField(
-                    controller: TextEditingController(),
-                    isPassword: true,
-                    icon: Icons.visibility,
-                    prefixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.confNewPass,
-                  ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  //!code
-                  CustomTextFormField(
-                    keyboardType: TextInputType.number,
-                    controller: TextEditingController(),
-                    prefixIcon: const Icon(
-                      Icons.code,
-                      color: AppColors.black,
-                    ),
-                    labeltext: AppStrings.code,
-                  ),
-                  SizedBox(
-                    height: 24.h,
-                  ),
-                  CustomBtn(
-                    onPressed: () {
-                      customNavigate(context, "/ResetePasswordView");
-                    },
-                    text: AppStrings.resetPass,
-                  )
                 ],
               ),
             ),

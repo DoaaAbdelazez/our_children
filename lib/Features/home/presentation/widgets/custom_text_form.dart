@@ -6,8 +6,11 @@ import '../../../../core/utils/app_text_style.dart';
 class CustomTextForm extends StatelessWidget {
   const CustomTextForm({
     super.key,
+    this.validate,
+    required this.controller,
   });
-
+  final String? Function(String?)? validate;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,6 +18,9 @@ class CustomTextForm extends StatelessWidget {
         top: 16,
       ),
       child: TextFormField(
+        
+        controller: controller,
+        validator: validate,
         cursorColor: AppColors.black,
         decoration: InputDecoration(
           fillColor: AppColors.white,
@@ -23,6 +29,7 @@ class CustomTextForm extends StatelessWidget {
           border: getBorderStyle(),
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),
+          errorBorder: getBorderStyle(),
         ),
       ),
     );
@@ -31,7 +38,8 @@ class CustomTextForm extends StatelessWidget {
 
 OutlineInputBorder getBorderStyle() {
   return OutlineInputBorder(
+    
     borderRadius: BorderRadius.circular(15),
-    // borderSide: const BorderSide(color: AppColors.black, strokeAlign: 3),
+    borderSide: const BorderSide(color: AppColors.black, strokeAlign: 3),
   );
 }

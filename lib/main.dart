@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_cubit.dart';
+import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
 import 'package:our_children/core/database/cache/cache_helper.dart';
 import 'package:our_children/core/services/services_locator.dart';
 import 'app/app.dart';
@@ -15,9 +16,9 @@ void main() async {
         BlocProvider(
           create: (context) => AuthCubit(),
         ),
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
+        BlocProvider(
+          create: (context) => HomeCubit(),
+        ),
       ],
       child: const OurChildren(),
     ),

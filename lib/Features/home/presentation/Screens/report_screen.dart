@@ -78,7 +78,9 @@ class _ReportScreenState extends State<ReportScreen> {
                     AppStrings.nameLose,
                     style: CustomTextStyle.aJannatLT400style24,
                   ),
-                  SizedBox(height: 65.h, child: const CustomTextForm()),
+                  SizedBox(height: 65.h, child:  CustomTextForm(
+                    controller: TextEditingController(),
+                  )),
                   SizedBox(
                     height: 12.h,
                   ),
@@ -87,7 +89,9 @@ class _ReportScreenState extends State<ReportScreen> {
                     AppStrings.ageLose,
                     style: CustomTextStyle.aJannatLT400style24,
                   ),
-                  SizedBox(height: 65.h, child: const CustomTextForm()),
+                  SizedBox(height: 65.h, child:  CustomTextForm(
+                    controller: TextEditingController(),
+                  )),
 
                   SizedBox(
                     height: 12.h,
@@ -131,7 +135,9 @@ class _ReportScreenState extends State<ReportScreen> {
                     AppStrings.city,
                     style: CustomTextStyle.aJannatLT400style24,
                   ),
-                  SizedBox(height: 65.h, child: const CustomTextForm()),
+                  SizedBox(height: 65.h, child:  CustomTextForm(
+                    controller: TextEditingController(),
+                  )),
                   SizedBox(
                     height: 12.h,
                   ),
@@ -140,7 +146,9 @@ class _ReportScreenState extends State<ReportScreen> {
                     AppStrings.phoneNumber,
                     style: CustomTextStyle.aJannatLT400style24,
                   ),
-                  SizedBox(height: 65.h, child: const CustomTextForm()),
+                  SizedBox(height: 65.h, child:  CustomTextForm(
+                    controller: TextEditingController(),
+                  )),
                   SizedBox(
                     height: 12.h,
                   ),

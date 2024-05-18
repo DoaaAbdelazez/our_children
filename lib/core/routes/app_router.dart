@@ -5,6 +5,7 @@ import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_c
 import 'package:our_children/Features/auth/peresenration/screens/forget_password_view.dart';
 import 'package:our_children/Features/choose_screen/choose_screen_view.dart';
 import 'package:our_children/Features/auth/peresenration/screens/splash_view.dart';
+import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
 import 'package:our_children/core/services/services_locator.dart';
 
 import '../../Features/First_Screen/first_screen_view.dart';
@@ -56,11 +57,17 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: "/SearchScreen",
-      builder: (context, state) => const SearchScreen(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => HomeCubit(),
+        child: const SearchScreen(),
+      ),
     ),
     GoRoute(
       path: "/ReportScreen",
-      builder: (context, state) => const ReportScreen(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => HomeCubit(),
+        child: const ReportScreen(),
+      ),
     ),
   ],
 );
