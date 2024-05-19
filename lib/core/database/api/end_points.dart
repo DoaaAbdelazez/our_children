@@ -7,13 +7,12 @@ class EndPoint {
   static const String ourChildrenFounPerson = 'person/FoundPerson';
   static const String ourChildrenLostPerson = 'person/LostPerson';
   static const String ourChildrengetLostPerson = 'lostPerson/getLost';
-static const String ourChildrenGetAllFound = 'getFound/foundPersons';
+  static const String ourChildrenGetAllFound = 'getFound/foundPersons';
   static const String ourChildrenlogout = 'auth/logout';
   //   static const String updateChef = 'chef/update';
   // static const String addMeal = 'meal/add-to-menu';
   // static const String updateMeal = 'chef/update-meal/';
   // static const String deleteMeal = 'meal/delete-meal/';
-  
 
   // static String getChefDataEndPoint(id) {
   //   return '$chefGet$id';
@@ -29,8 +28,11 @@ static const String ourChildrenGetAllFound = 'getFound/foundPersons';
 }
 
 class ApiKey {
+  static const String status = 'status';
   static const String email = 'email';
   static const String password = 'password';
   static const String message = 'message';
-  static const String result = 'result';
+  static const String errorMessage = 'ErrorMessage';
+  static const String results = 'results';
+  static const String id = 'id';
 }

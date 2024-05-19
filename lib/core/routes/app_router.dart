@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:our_children/Features/Rules_screen/rules_screen_view.dart';
@@ -6,6 +7,7 @@ import 'package:our_children/Features/auth/peresenration/screens/forget_password
 import 'package:our_children/Features/choose_screen/choose_screen_view.dart';
 import 'package:our_children/Features/auth/peresenration/screens/splash_view.dart';
 import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
+import 'package:our_children/core/database/api/dio_consumer.dart';
 import 'package:our_children/core/services/services_locator.dart';
 
 import '../../Features/First_Screen/first_screen_view.dart';
@@ -28,14 +30,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: "/SignUpView",
       builder: (context, state) => BlocProvider(
-        create: (context) => AuthCubit(),
+        create: (context) => AuthCubit(DioConsumer(Dio())),
         child: const SignUpView(),
       ),
     ),
     GoRoute(
       path: "/SignInView",
       builder: (context, state) => BlocProvider(
-        create: (context) => AuthCubit(),
+        create: (context) => AuthCubit(DioConsumer(Dio())),
         child: const SignInView(),
       ),
     ),

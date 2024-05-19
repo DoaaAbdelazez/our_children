@@ -64,7 +64,15 @@ class SignInView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Center(
                   child: BlocConsumer<AuthCubit, AuthState>(
-                    listener: (context, state) {},
+                    listener: (context, state) {
+                      if (state is SignInSucessState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("تم تسجيل الدخول")));
+                      } else if (state is SignInErrorState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.errMessage)));
+                      }
+                    },
                     builder: (context, state) {
                       return Form(
                         key: BlocProvider.of<AuthCubit>(context).signInKey,
@@ -157,7 +165,7 @@ class SignInView extends StatelessWidget {
                                           .signInKey
                                           .currentState!
                                           .validate()) {
-                                        customNavigate(
+                                        customReplacementNavigate(
                                             context, "/RulesScreenView");
                                       }
                                     },

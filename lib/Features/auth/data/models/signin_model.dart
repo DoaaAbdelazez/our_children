@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:our_children/core/database/api/end_points.dart';
 
 class SigninModel extends Equatable {
   final bool? success;
@@ -8,7 +9,7 @@ class SigninModel extends Equatable {
 
   factory SigninModel.fromJson(Map<String, dynamic> json) => SigninModel(
         success: json['success'] as bool?,
-        results: json['results'] as String?,
+        results: json[ApiKey.results] as String?,
       );
 
   Map<String, dynamic> toJson() => {

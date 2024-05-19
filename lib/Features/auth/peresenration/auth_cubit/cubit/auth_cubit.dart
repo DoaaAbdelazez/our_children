@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:our_children/Features/auth/data/models/signin_model.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
+import 'package:our_children/core/database/api/api_consumer.dart';
+import 'package:our_children/core/database/api/end_points.dart';
+import 'package:our_children/core/database/cache/cache_helper.dart';
+import 'package:our_children/core/errors/exceptions.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit() : super(AuthInitialState());
+  AuthCubit(this.api) : super(AuthInitialState());
+  final ApiConsumer api;
   GlobalKey<FormState> signInKey = GlobalKey();
   GlobalKey<FormState> signUpKey = GlobalKey();
   GlobalKey<FormState> resetPasswordKey = GlobalKey();
@@ -63,5 +70,26 @@ class AuthCubit extends Cubit<AuthState> {
     resetConfPassowrdsuffixIcon =
         isresetConfPasswordShowing ? Icons.visibility : Icons.visibility_off;
     emit(ChangeResetConfPasswordSuffixIcon());
+  }
+
+  SigninModel? auth;
+  signIn() async {
+    try {
+      emit(SignInLoadingState());
+      final response = await api.post(
+        EndPoint.ourChildrenSignIn,
+        data: {
+          ApiKey.email: signInEmailController.text,
+          ApiKey.password: signInPasswordController.text
+        },
+      );
+      auth = SigninModel.fromJson(response);
+      final decodeToken = JwtDecoder.decode(auth!.results!);
+      CacheHelper().saveData(key: ApiKey.results, value: auth!.results);
+      CacheHelper().saveData(key: ApiKey.id, value:decodeToken[ApiKey.id]);
+      emit(SignInSucessState());
+    } on ServerException catch (e) {
+      emit(SignInErrorState(errMessage: e.errorModel.errorMessage));
+    }
   }
 }
