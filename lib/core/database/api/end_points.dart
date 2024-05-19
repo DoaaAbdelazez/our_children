@@ -35,4 +35,6 @@ class ApiKey {
   static const String errorMessage = 'ErrorMessage';
   static const String results = 'results';
   static const String id = 'id';
+  static const String userName = 'userName';
+  static const String confirmPassword = 'confirmPassword';
 }

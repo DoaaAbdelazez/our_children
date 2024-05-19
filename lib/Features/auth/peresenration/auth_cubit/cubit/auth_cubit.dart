@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:our_children/Features/auth/data/models/signin_model.dart';
+import 'package:our_children/Features/auth/data/models/signup_model.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
 import 'package:our_children/core/database/api/api_consumer.dart';
 import 'package:our_children/core/database/api/end_points.dart';
@@ -86,10 +87,28 @@ class AuthCubit extends Cubit<AuthState> {
       auth = SigninModel.fromJson(response);
       final decodeToken = JwtDecoder.decode(auth!.results!);
       CacheHelper().saveData(key: ApiKey.results, value: auth!.results);
-      CacheHelper().saveData(key: ApiKey.id, value:decodeToken[ApiKey.id]);
+      CacheHelper().saveData(key: ApiKey.id, value: decodeToken[ApiKey.id]);
       emit(SignInSucessState());
     } on ServerException catch (e) {
       emit(SignInErrorState(errMessage: e.errorModel.errorMessage));
+    }
+  }
+
+  signUp() async {
+    try {
+      emit(SignInLoadingState());
+      final resopnse = await api.post(
+        EndPoint.baseUrl,
+        data: {
+          ApiKey.userName: signUpNameController.text,
+          ApiKey.password: signUpPasswordController.text,
+          ApiKey.confirmPassword: signUpConfPasswordController.text,
+        },
+      );
+      final signUpModel = SignupModel.fromJson(resopnse);
+      emit(SignUpSucessState(message: signUpModel.message!));
+    } on ServerException catch (e) {
+      emit(SignUpErrorState(errMessage: e.errorModel.errorMessage));
     }
   }
 }

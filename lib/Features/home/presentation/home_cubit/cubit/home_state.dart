@@ -10,3 +10,4 @@ final class ReportLoadingState extends HomeState {}
 final class ReportSucessState extends HomeState {}
 final class ReportErrorState extends HomeState {}
 final class ChangeGroupState extends HomeState {}
+final class UploadSearchPic extends HomeState {}

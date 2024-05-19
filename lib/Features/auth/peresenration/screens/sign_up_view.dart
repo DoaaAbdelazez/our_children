@@ -6,6 +6,7 @@ import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_s
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
+import 'package:our_children/core/widgets/custom_loading_indicator.dart';
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/widgets/custome_button.dart';
@@ -61,7 +62,15 @@ class SignUpView extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Center(
                   child: BlocConsumer<AuthCubit, AuthState>(
-                    listener: (context, state) {},
+                    listener: (context, state) {
+                      if (state is SignUpSucessState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.message)));
+                      } else if (state is SignUpErrorState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text(state.errMessage)));
+                      }
+                    },
                     builder: (context, state) {
                       return Form(
                         key: BlocProvider.of<AuthCubit>(context).signUpKey,
@@ -179,17 +188,19 @@ class SignUpView extends StatelessWidget {
                               text: AppStrings.accept,
                             ),
                             //!btn
-                            CustomButton(
-                              onPressed: () {
-                                if (BlocProvider.of<AuthCubit>(context)
-                                    .signUpKey
-                                    .currentState!
-                                    .validate()) {
-                                  customNavigate(context, "/SignInView");
-                                }
-                              },
-                              text: AppStrings.signup,
-                            ),
+                            state is SignUpLoadingState
+                                ? const CusotmLoadingIndicator()
+                                : CustomButton(
+                                    onPressed: () {
+                                      if (BlocProvider.of<AuthCubit>(context)
+                                          .signUpKey
+                                          .currentState!
+                                          .validate()) {
+                                        customNavigate(context, "/SignInView");
+                                      }
+                                    },
+                                    text: AppStrings.signup,
+                                  ),
                           ],
                         ),
                       );
