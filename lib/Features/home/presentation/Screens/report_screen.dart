@@ -108,7 +108,7 @@ class _ReportScreenState extends State<ReportScreen> {
                               style: CustomTextStyle.aJannatLT400style24,
                             ),
                             SizedBox(
-                              height: 70,
+                              height: 65,
                               width: double.infinity,
                               child: CustomTextForm(
                                 controller: BlocProvider.of<HomeCubit>(context)

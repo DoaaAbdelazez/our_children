@@ -93,6 +93,8 @@ class ResetePasswordView extends StatelessWidget {
                                         .resetPasswordController
                                         .text) {
                                   return AppStrings.thePasswordNotMatch;
+                                } else if (data!.isEmpty) {
+                                  return AppStrings.shouldpassword;
                                 }
                                 return null;
                               },

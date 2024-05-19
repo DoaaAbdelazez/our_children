@@ -158,6 +158,8 @@ class SignUpView extends StatelessWidget {
                                         .signInPasswordController
                                         .text) {
                                   return AppStrings.thePasswordNotMatch;
+                                } else if (data!.isEmpty) {
+                                  return AppStrings.shouldpassword;
                                 }
                                 return null;
                               },

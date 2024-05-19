@@ -114,7 +114,7 @@ class SignInView extends StatelessWidget {
                               },
                               validate: (data) {
                                 if (data!.length < 6 || data.isEmpty) {
-                                  return AppStrings.enterValidPassword;
+                                  return AppStrings.shouldpassword;
                                 }
                                 return null;
                               },

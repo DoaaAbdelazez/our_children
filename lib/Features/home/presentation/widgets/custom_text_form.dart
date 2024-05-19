@@ -28,7 +28,7 @@ class CustomTextForm extends StatelessWidget {
           border: getBorderStyle(),
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),
-          // errorBorder: getBorderStyle(),
+          errorBorder: getBorderStyle(),
         ),
       ),
     );

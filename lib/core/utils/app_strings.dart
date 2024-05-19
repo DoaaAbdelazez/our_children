@@ -41,6 +41,7 @@ abstract class AppStrings {
   static const String done = "تم";
   static const String enterValidPassword = "برجاء كتابة كلمة السر الصحيحه";
   static const String enterValidEmail = "برجاء كتابة البريد الاكتروني الصحيح";
+  static const String entervalidEmail = "برجاء كتابة البريد الاكتروني ";
   static const String enterName = "يرجى كتابة الاسم";
   static const String enterCode = "يرجى كتابةالكود";
   static const String thePasswordNotMatch = "كلمة السر غير متطابقة";
