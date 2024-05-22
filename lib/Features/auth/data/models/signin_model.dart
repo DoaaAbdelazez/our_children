@@ -8,7 +8,7 @@ class SigninModel extends Equatable {
   const SigninModel({this.success, this.results});
 
   factory SigninModel.fromJson(Map<String, dynamic> json) => SigninModel(
-        success: json['success'] as bool?,
+        success: json[ApiKey.success] as bool?,
         results: json[ApiKey.results] as String?,
       );
 

@@ -1,13 +1,13 @@
 import 'package:our_children/core/database/api/end_points.dart';
 
 class ErrorModel{
-  final int status;
+  final int success;
   final String errorMessage;
 
-  ErrorModel({required this.status, required this.errorMessage});
+  ErrorModel({required this.success, required this.errorMessage});
   factory ErrorModel.fromJson(Map jsonData) {
     return ErrorModel(
-      status: jsonData[ApiKey.status],
+      success: jsonData[ApiKey.success],
       errorMessage: jsonData[ApiKey.errorMessage],
     );
   }

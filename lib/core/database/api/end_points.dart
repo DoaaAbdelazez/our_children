@@ -1,5 +1,5 @@
 class EndPoint {
-  static const String baseUrl = 'https://3130-197-54-180-11.ngrok-free.app';
+  static const String baseUrl = 'http://backends-three.vercel.app';
   static const String ourChildrenSignIn = 'auth/login';
   static const String ourChildrenRegister = 'auth/register';
   static const String ourChildrenSendForgetCode = 'auth/send-forget-code';
@@ -28,7 +28,8 @@ class EndPoint {
 }
 
 class ApiKey {
-  static const String status = 'status';
+  static const String success = 'success';
+  
   static const String email = 'email';
   static const String password = 'password';
   static const String message = 'message';

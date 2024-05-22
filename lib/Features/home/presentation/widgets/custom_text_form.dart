@@ -18,10 +18,12 @@ class CustomTextForm extends StatelessWidget {
         top: 16,
       ),
       child: TextFormField(
+        
         controller: controller,
         validator: validate,
         cursorColor: AppColors.black,
         decoration: InputDecoration(
+          contentPadding: const EdgeInsets.all(10),
           fillColor: AppColors.white,
           filled: true,
           labelStyle: CustomTextStyle.cairo400style15,
