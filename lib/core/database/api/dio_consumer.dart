@@ -19,7 +19,7 @@ class DioConsumer extends ApiConsumer {
       responseBody: true,
       error: true,
     ));
-    dio.interceptors.add(ApiInterceptors());
+  
   }
   @override
   Future delete(

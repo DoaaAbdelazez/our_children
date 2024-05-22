@@ -96,7 +96,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   signUp() async {
     try {
-      emit(SignInLoadingState());
+      emit(SignUpLoadingState());
       final resopnse = await api.post(
         EndPoint.baseUrl,
         data: {
