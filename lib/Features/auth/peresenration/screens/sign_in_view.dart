@@ -117,7 +117,7 @@ class SignInView extends StatelessWidget {
                                     .changeLoginPasswordSuffixIcon();
                               },
                               validate: (data) {
-                                if (data!.length < 6 || data.isEmpty) {
+                                if (data!.length < 4 || data.isEmpty) {
                                   return AppStrings.shouldpassword;
                                 }
                                 return null;

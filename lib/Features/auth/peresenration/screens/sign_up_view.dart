@@ -66,13 +66,13 @@ class SignUpView extends StatelessWidget {
                       if (state is SignUpSucessState) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text(state.message),
+                            content: Text(state.success),
                           ),
                         );
                         customNavigate(context, "/SignInView");
                       } else if (state is SignUpErrorState) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(state.errMessage)));
+                            SnackBar(content: Text(state.message)));
                       }
                     },
                     builder: (context, state) {
@@ -106,7 +106,7 @@ class SignUpView extends StatelessWidget {
                             CustomTextFormField(
                               keyboardType: TextInputType.emailAddress,
                               controller: BlocProvider.of<AuthCubit>(context)
-                                  .signInEmailController,
+                                  .signUpEmailController,
                               prefixIcon: const Icon(
                                 Icons.email_outlined,
                                 color: AppColors.black,
@@ -127,13 +127,13 @@ class SignUpView extends StatelessWidget {
                             //!password
                             CustomTextFormField(
                               validate: (data) {
-                                if (data!.length < 6 || data.isEmpty) {
+                                if (data!.length < 4 || data.isEmpty) {
                                   return AppStrings.shouldpassword;
                                 }
                                 return null;
                               },
                               controller: BlocProvider.of<AuthCubit>(context)
-                                  .signInPasswordController,
+                                  .signUpPasswordController,
                               isPassword: BlocProvider.of<AuthCubit>(context)
                                   .isSignUpPasswordShowing,
                               icon: BlocProvider.of<AuthCubit>(context)
@@ -159,7 +159,7 @@ class SignUpView extends StatelessWidget {
                                         .signUpConfPasswordController
                                         .text !=
                                     BlocProvider.of<AuthCubit>(context)
-                                        .signInPasswordController
+                                        .signUpPasswordController
                                         .text) {
                                   return AppStrings.thePasswordNotMatch;
                                 } else if (data!.isEmpty) {

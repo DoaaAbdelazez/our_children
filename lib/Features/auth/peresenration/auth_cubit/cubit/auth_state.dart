@@ -25,15 +25,15 @@ final class SignInErrorState extends AuthState {
 final class SignUpLoadingState extends AuthState {}
 
 final class SignUpSucessState extends AuthState {
-  final String message;
+  final String success;
 
-  SignUpSucessState({required this.message});
+  SignUpSucessState({required this.success});
 }
 
 final class SignUpErrorState extends AuthState {
-  final String errMessage;
+  final String message;
 
-  SignUpErrorState({required this.errMessage});
+  SignUpErrorState({required this.message});
 }
 
 final class ForgetPasswordLoadingState extends AuthState {}

@@ -90,7 +90,7 @@ class AuthCubit extends Cubit<AuthState> {
       CacheHelper().saveData(key: ApiKey.id, value: decodeToken[ApiKey.id]);
       emit(SignInSucessState());
     } on ServerException catch (e) {
-      emit(SignInErrorState(errMessage: e.errorModel.errorMessage));
+      emit(SignInErrorState(errMessage: e.errorModel.message));
     }
   }
 
@@ -98,17 +98,18 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(SignUpLoadingState());
       final resopnse = await api.post(
-        EndPoint.baseUrl,
+        EndPoint.ourChildrenRegister,
         data: {
           ApiKey.userName: signUpNameController.text,
+          ApiKey.email: signUpEmailController.text,
           ApiKey.password: signUpPasswordController.text,
           ApiKey.confirmPassword: signUpConfPasswordController.text,
         },
       );
       final signUpModel = SignupModel.fromJson(resopnse);
-      emit(SignUpSucessState(message: signUpModel.message!));
+      emit(SignUpSucessState(success: signUpModel.message!));
     } on ServerException catch (e) {
-      emit(SignUpErrorState(errMessage: e.errorModel.errorMessage));
+      emit(SignUpErrorState(message: e.errorModel.message));
     }
   }
 }

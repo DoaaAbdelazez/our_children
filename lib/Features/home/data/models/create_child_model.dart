@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:our_children/core/database/api/end_points.dart';
 
 class CreateChildModel extends Equatable {
   final bool? success;
@@ -9,8 +10,8 @@ class CreateChildModel extends Equatable {
   factory CreateChildModel.fromSuccessTrueId664e2d74d91f8caa816205b1(
       Map<String, dynamic> json) {
     return CreateChildModel(
-      success: json['success'] as bool?,
-      id: json['id'] as String?,
+      success: json[ApiKey.success] as bool?,
+      id: json[ApiKey.id] as String?,
     );
   }
 

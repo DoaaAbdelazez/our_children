@@ -123,6 +123,9 @@ class DioConsumer extends ApiConsumer {
 
           case 409: //conflict
             throw ConflictException(ErrorModel.fromJson(e.response.data));
+          case 308: //conflict
+            throw ConflictException(
+                ErrorModel.fromJson({ApiKey.message: "Somthing went wrong"}));
 
           // print(e.response);
         }
