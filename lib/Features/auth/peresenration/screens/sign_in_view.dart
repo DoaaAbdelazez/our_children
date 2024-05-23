@@ -67,7 +67,11 @@ class SignInView extends StatelessWidget {
                     listener: (context, state) {
                       if (state is SignInSucessState) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text("تم تسجيل الدخول")));
+                          const SnackBar(
+                            content: Text("تم تسجيل الدخول"),
+                          ),
+                        );
+                        customReplacementNavigate(context, "/RulesScreenView");
                       } else if (state is SignInErrorState) {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(state.errMessage)));
@@ -165,8 +169,10 @@ class SignInView extends StatelessWidget {
                                           .signInKey
                                           .currentState!
                                           .validate()) {
-                                        customReplacementNavigate(
-                                            context, "/RulesScreenView");
+                                        BlocProvider.of<AuthCubit>(context)
+                                            .signIn();
+                                        // customReplacementNavigate(
+                                        //     context, "/RulesScreenView");
                                       }
                                     },
                                     text: AppStrings.login,

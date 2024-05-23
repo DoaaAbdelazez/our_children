@@ -65,7 +65,11 @@ class SignUpView extends StatelessWidget {
                     listener: (context, state) {
                       if (state is SignUpSucessState) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(state.message)));
+                          SnackBar(
+                            content: Text(state.message),
+                          ),
+                        );
+                        customNavigate(context, "/SignInView");
                       } else if (state is SignUpErrorState) {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(state.errMessage)));
@@ -198,7 +202,9 @@ class SignUpView extends StatelessWidget {
                                           .signUpKey
                                           .currentState!
                                           .validate()) {
-                                        customNavigate(context, "/SignInView");
+                                        BlocProvider.of<AuthCubit>(context)
+                                            .signUp();
+                                        // customNavigate(context, "/SignInView");
                                       }
                                     },
                                     text: AppStrings.signup,

@@ -18,7 +18,6 @@ class CustomTextForm extends StatelessWidget {
         top: 16,
       ),
       child: TextFormField(
-        
         controller: controller,
         validator: validate,
         cursorColor: AppColors.black,

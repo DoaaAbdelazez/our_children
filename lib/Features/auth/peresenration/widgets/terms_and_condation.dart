@@ -11,9 +11,7 @@ class TermsAndCondationWdget extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const CustomCheckBox(
-          
-        ),
+        const CustomCheckBox(),
         Text(
           text,
           style: CustomTextStyle.almarai400style14,

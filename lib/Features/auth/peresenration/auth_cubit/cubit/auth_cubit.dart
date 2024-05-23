@@ -85,7 +85,7 @@ class AuthCubit extends Cubit<AuthState> {
         },
       );
       auth = SigninModel.fromJson(response);
-      final decodeToken = JwtDecoder.decode(auth!.results!);
+      final decodeToken = JwtDecoder.decode(auth!.results);
       CacheHelper().saveData(key: ApiKey.results, value: auth!.results);
       CacheHelper().saveData(key: ApiKey.id, value: decodeToken[ApiKey.id]);
       emit(SignInSucessState());

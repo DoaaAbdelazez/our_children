@@ -53,13 +53,14 @@ class ForgetPasswordView extends StatelessWidget {
                   SizedBox(
                     height: 24.h,
                   ),
-                  //!email
+              
                   BlocConsumer<AuthCubit, AuthState>(
                     listener: (context, state) {},
                     builder: (context, state) {
                       return Form(
                         key: BlocProvider.of<AuthCubit>(context)
                             .forgetPasswordKey,
+                                //!email
                         child: CustomTextFormField(
                           keyboardType: TextInputType.emailAddress,
                           controller: BlocProvider.of<AuthCubit>(context)

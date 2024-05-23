@@ -10,8 +10,8 @@ class OurChildren extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(428,926),
-      builder:(context, child) => MaterialApp.router(
+      designSize: const Size(428, 926),
+      builder: (context, child) => MaterialApp.router(
         locale: const Locale('ar'),
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
@@ -23,8 +23,6 @@ class OurChildren extends StatelessWidget {
         supportedLocales: S.delegate.supportedLocales,
         routerConfig: router,
       ),
-      );
-    
-    
+    );
   }
 }

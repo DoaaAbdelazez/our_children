@@ -10,7 +10,10 @@ class CustomTextFormField extends StatelessWidget {
     required this.prefixIcon,
     this.isPassword = false,
     this.suffixIconOnPressed,
-    this.icon, required this.controller, this.validate, this.keyboardType,
+    this.icon,
+    required this.controller,
+    this.validate,
+    this.keyboardType,
   });
   final String labeltext;
   final Icon prefixIcon;

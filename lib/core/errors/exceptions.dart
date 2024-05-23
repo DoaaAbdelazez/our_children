@@ -29,6 +29,7 @@ class BadRequestException extends ServerException {
 class UnauthorizedException extends ServerException {
   UnauthorizedException(super.messageModel);
 }
+
 class ForbiddenException extends ServerException {
   ForbiddenException(super.messageModel);
 }
@@ -40,6 +41,7 @@ class NotFoundException extends ServerException {
 class ConflictException extends ServerException {
   ConflictException(super.messageModel);
 }
+
 class CancleExeption extends ServerException {
   CancleExeption(super.messageModel);
 }
