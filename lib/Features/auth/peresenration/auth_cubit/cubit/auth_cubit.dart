@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
@@ -78,14 +77,14 @@ class AuthCubit extends Cubit<AuthState> {
   signIn() async {
     try {
       emit(SignInLoadingState());
-      final Response response = await api.post(
+      final  response = await api.post(
         EndPoint.ourChildrenSignIn,
         data: {
           ApiKey.email: signInEmailController.text,
           ApiKey.password: signInPasswordController.text
         },
       );
-      auth = SigninModel.fromJson(response.data);
+      auth = SigninModel.fromJson(response);
       final decodeToken = JwtDecoder.decode(auth!.results);
       CacheHelper().saveData(key: ApiKey.results, value: auth!.results);
       CacheHelper().saveData(key: ApiKey.id, value: decodeToken[ApiKey.id]);
