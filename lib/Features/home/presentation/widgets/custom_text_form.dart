@@ -22,7 +22,7 @@ class CustomTextForm extends StatelessWidget {
         validator: validate,
         cursorColor: AppColors.black,
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.all(10),
+          contentPadding: const EdgeInsets.all(20),
           fillColor: AppColors.white,
           filled: true,
           labelStyle: CustomTextStyle.cairo400style15,

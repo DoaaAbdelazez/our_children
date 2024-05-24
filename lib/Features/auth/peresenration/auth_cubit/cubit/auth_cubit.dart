@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:our_children/Features/auth/data/models/reset_password_model.dart';
+import 'package:our_children/Features/auth/data/models/send_codemodel.dart';
 import 'package:our_children/Features/auth/data/models/signin_model.dart';
 import 'package:our_children/Features/auth/data/models/signup_model.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
@@ -73,20 +75,20 @@ class AuthCubit extends Cubit<AuthState> {
     emit(ChangeResetConfPasswordSuffixIcon());
   }
 
-  SigninModel? auth;
+  SigninModel? signinModel;
   signIn() async {
     try {
       emit(SignInLoadingState());
-      final  response = await api.post(
+      final response = await api.post(
         EndPoint.ourChildrenSignIn,
         data: {
           ApiKey.email: signInEmailController.text,
           ApiKey.password: signInPasswordController.text
         },
       );
-      auth = SigninModel.fromJson(response);
-      final decodeToken = JwtDecoder.decode(auth!.results);
-      CacheHelper().saveData(key: ApiKey.results, value: auth!.results);
+      signinModel = SigninModel.fromJson(response);
+      final decodeToken = JwtDecoder.decode(signinModel!.results);
+      CacheHelper().saveData(key: ApiKey.results, value: signinModel!.results);
       CacheHelper().saveData(key: ApiKey.id, value: decodeToken[ApiKey.id]);
       emit(SignInSucessState());
     } on ServerException catch (e) {
@@ -94,6 +96,7 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  SignupModel? signupModel;
   signUp() async {
     try {
       emit(SignUpLoadingState());
@@ -110,6 +113,40 @@ class AuthCubit extends Cubit<AuthState> {
       emit(SignUpSucessState(success: signUpModel.message!));
     } on ServerException catch (e) {
       emit(SignUpErrorState(message: e.errorModel.message));
+    }
+  }
+
+  SendCodemodel? sendCodemodel;
+  sendCode() async {
+    try {
+      emit(ForgetPasswordLoadingState());
+      final response = await api.post(
+        EndPoint.ourChildrenSendForgetCode,
+        data: {
+          ApiKey.email: forgetPasswordEmailController.text,
+        },
+      );
+      sendCodemodel = SendCodemodel.fromJson(response);
+
+      emit(ForgetPasswordSucessState());
+    } on ServerException catch (e) {
+      emit(ForgetPasswordErrorState(message: e.errorModel.message));
+    }
+  }
+
+  ResetPasswordModel? resetPasswordModel;
+  resetPassword() async {
+    try {
+      emit(ResetPasswordLoadingState());
+      final response = await api.post(EndPoint.ourChildrenResetPassword, data: {
+        ApiKey.password: resetPasswordController.text,
+        ApiKey.confirmPassword: resetConfPasswordController.text,
+        ApiKey.forgetCode: resetCodeController.text
+      });
+      resetPasswordModel = ResetPasswordModel.fromJson(response);
+      emit(ResetPasswordSucessState());
+    } on ServerException catch (e) {
+      emit(ResetPasswordErrorState(message: e.errorModel.message));
     }
   }
 }

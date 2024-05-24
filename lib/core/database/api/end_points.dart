@@ -4,19 +4,19 @@ class EndPoint {
   static const String ourChildrenRegister = 'auth/register';
   static const String ourChildrenSendForgetCode = 'auth/send-forget-code';
   static const String ourChildrenResetPassword = 'auth/reset-password';
-  static const String ourChildrenFounPerson = 'person/FoundPerson';
-  static const String ourChildrenLostPerson = 'person/LostPerson';
-  static const String ourChildrengetLostPerson = 'lostPerson/getLost';
-  static const String ourChildrenGetAllFound = 'getFound/foundPersons';
+  static const String ourChildrenCreatePerson = 'person/create';
+  static const String ourChildrengetLostPerson = 'api/lost/';
+  static const String ourChildrenGetAllFound = 'GETfound/allusers';
   static const String ourChildrenlogout = 'auth/logout';
+  static const String ourChildrenDeleteRequest = 'delete/';
 
-  // static String getChefDataEndPoint(id) {
-  //   return '$chefGet$id';
-  // }
+  static String getrequestEndPoint(id) {
+    return '$ourChildrengetLostPerson$id';
+  }
 
-  // static String getupdateMealEndPoint(id) {
-  //   return '$updateMeal$id';
-  // }
+  static String delrequestEndPoint(id) {
+    return '$ourChildrenDeleteRequest$id';
+  }
 
   // static String getdeleteMealEndPoint(id) {
   //   return '$updateMeal$id';
@@ -40,4 +40,5 @@ class ApiKey {
   static const String location = 'location';
   static const String governorate = 'governorate';
   static const String phone = 'phone';
+  static const String forgetCode = 'forgetCode';
 }

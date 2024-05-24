@@ -6,7 +6,7 @@ import '../../../../core/utils/app_text_style.dart';
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
-    required this.labeltext,
+    required this.hintText,
     required this.prefixIcon,
     this.isPassword = false,
     this.suffixIconOnPressed,
@@ -15,7 +15,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validate,
     this.keyboardType,
   });
-  final String labeltext;
+  final String hintText;
   final Icon prefixIcon;
   final bool isPassword;
   final IconData? icon;
@@ -47,7 +47,7 @@ class CustomTextFormField extends StatelessWidget {
               color: AppColors.black,
             ),
           ),
-          labelText: labeltext,
+          hintText: hintText,
           labelStyle: CustomTextStyle.cairo400style15,
           border: getBorderStyle(),
           enabledBorder: getBorderStyle(),

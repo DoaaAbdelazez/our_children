@@ -10,6 +10,8 @@ import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 import 'package:our_children/core/widgets/custom_btn.dart';
 
+import '../../../../core/widgets/custom_loading_indicator.dart';
+
 class ForgetPasswordView extends StatelessWidget {
   const ForgetPasswordView({super.key});
 
@@ -26,37 +28,48 @@ class ForgetPasswordView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 60),
-                    child: Image.asset(
-                      Assets.assetsImagesLogo,
-                      width: 200.w,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 54.h,
-                  ),
-                  Text(
-                    AppStrings.isForgetPassword,
-                    style: CustomTextStyle.cairo700style24,
-                  ),
-                  SizedBox(
-                    height: 24.h,
-                  ),
-                  Text(
-                    AppStrings.pleseWriteEmail,
-                    style: CustomTextStyle.cairo400style16,
-                  ),
-                  SizedBox(
-                    height: 24.h,
-                  ),
-                  BlocConsumer<AuthCubit, AuthState>(
-                    listener: (context, state) {},
-                    builder: (context, state) {
-                      return Form(
+            child: BlocConsumer<AuthCubit, AuthState>(
+              listener: (context, state) {
+                if (state is ForgetPasswordSucessState) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Check your Email"),
+                  ));
+
+                  customReplacementNavigate(context, "/ResetePasswordView");
+                } else if (state is SignUpErrorState) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(state.message)));
+                }
+              },
+              builder: (context, state) {
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 60),
+                        child: Image.asset(
+                          Assets.assetsImagesLogo,
+                          width: 200.w,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 54.h,
+                      ),
+                      Text(
+                        AppStrings.isForgetPassword,
+                        style: CustomTextStyle.cairo700style24,
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
+                      Text(
+                        AppStrings.pleseWriteEmail,
+                        style: CustomTextStyle.cairo400style16,
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
+                      Form(
                         key: BlocProvider.of<AuthCubit>(context)
                             .forgetPasswordKey,
                         //!email
@@ -64,7 +77,7 @@ class ForgetPasswordView extends StatelessWidget {
                           keyboardType: TextInputType.emailAddress,
                           controller: BlocProvider.of<AuthCubit>(context)
                               .forgetPasswordEmailController,
-                          labeltext: AppStrings.email,
+                          hintText: AppStrings.email,
                           prefixIcon: const Icon(Icons.email),
                           validate: (data) {
                             if (data!.isEmpty || !data.contains('@gmail.com')) {
@@ -73,27 +86,29 @@ class ForgetPasswordView extends StatelessWidget {
                             return null;
                           },
                         ),
-                      );
-                    },
+                      ),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      state is ForgetPasswordLoadingState
+                          ? const CusotmLoadingIndicator()
+                          : CustomBtn(
+                              onPressed: () {
+                                BlocProvider.of<AuthCubit>(context)
+                                    .forgetPasswordKey
+                                    .currentState!
+                                    .validate();
+                                {
+                                  BlocProvider.of<AuthCubit>(context)
+                                      .sendCode();
+                                }
+                              },
+                              text: AppStrings.sendCode,
+                            ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  CustomBtn(
-                    onPressed: () {
-                      BlocProvider.of<AuthCubit>(context)
-                          .forgetPasswordKey
-                          .currentState!
-                          .validate();
-                      {
-                        customReplacementNavigate(
-                            context, "/ResetePasswordView");
-                      }
-                    },
-                    text: AppStrings.sendCode,
-                  ),
-                ],
-              ),
+                );
+              },
             ),
           )
         ],

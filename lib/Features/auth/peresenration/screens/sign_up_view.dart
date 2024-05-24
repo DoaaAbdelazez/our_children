@@ -95,7 +95,7 @@ class SignUpView extends StatelessWidget {
                                 Icons.person,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.enterYourName,
+                              hintText: AppStrings.enterYourName,
                             ),
                             //!SizedBox
                             SizedBox(
@@ -111,7 +111,7 @@ class SignUpView extends StatelessWidget {
                                 Icons.email_outlined,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.email,
+                              hintText: AppStrings.email,
                               validate: (data) {
                                 if (data!.isEmpty ||
                                     !data.contains('@gmail.com')) {
@@ -146,7 +146,7 @@ class SignUpView extends StatelessWidget {
                                 Icons.lock_outline,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.password,
+                              hintText: AppStrings.password,
                             ),
                             //!SizedBox
                             SizedBox(
@@ -181,7 +181,7 @@ class SignUpView extends StatelessWidget {
                                 Icons.lock_outline,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.confPassword,
+                              hintText: AppStrings.confPassword,
                             ),
                             //!sizedBox
 

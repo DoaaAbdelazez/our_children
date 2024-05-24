@@ -98,7 +98,7 @@ class SignInView extends StatelessWidget {
                                 Icons.email_outlined,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.email,
+                              hintText: AppStrings.email,
                             ),
                             //!SizedBox
                             SizedBox(
@@ -126,7 +126,7 @@ class SignInView extends StatelessWidget {
                                 Icons.lock_outline,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.password,
+                              hintText: AppStrings.password,
                             ),
                             //!SizedBox
                             SizedBox(

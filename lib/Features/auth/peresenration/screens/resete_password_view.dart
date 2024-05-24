@@ -5,6 +5,7 @@ import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_c
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
+import 'package:our_children/core/widgets/custom_loading_indicator.dart';
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
@@ -25,33 +26,46 @@ class ResetePasswordView extends StatelessWidget {
             Assets.assetsImagesBackgroundone,
             fit: BoxFit.cover,
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(34),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 35),
-                    child: Image.asset(
-                      Assets.assetsImagesLogo,
-                      width: 200.w,
-                    ),
+          BlocConsumer<AuthCubit, AuthState>(
+            listener: (context, state) {
+              if (state is ResetPasswordSucessState) {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content: Text("تم تغيير كلمة المرور"),
+                ));
+                customReplacementNavigate(context, "/SignInView");
+              } else if (state is ResetPasswordErrorState) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("Invalid code!"),
                   ),
-                  SizedBox(
-                    height: 40.h,
-                  ),
-                  Text(
-                    AppStrings.resetPass,
-                    style: CustomTextStyle.cairo700style24,
-                  ),
-                  SizedBox(
-                    height: 24.h,
-                  ),
-                  //!Form
-                  BlocConsumer<AuthCubit, AuthState>(
-                    listener: (context, state) {},
-                    builder: (context, state) {
-                      return Form(
+                );
+              }
+            },
+            builder: (context, state) {
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(34),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 35),
+                        child: Image.asset(
+                          Assets.assetsImagesLogo,
+                          width: 200.w,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 40.h,
+                      ),
+                      Text(
+                        AppStrings.resetPass,
+                        style: CustomTextStyle.cairo700style24,
+                      ),
+                      SizedBox(
+                        height: 24.h,
+                      ),
+                      //!Form
+                      Form(
                         key: BlocProvider.of<AuthCubit>(context)
                             .resetPasswordKey,
                         child: Column(
@@ -78,7 +92,7 @@ class ResetePasswordView extends StatelessWidget {
                                 Icons.lock_outline,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.newPass,
+                              hintText: AppStrings.newPass,
                             ),
                             SizedBox(
                               height: 16.h,
@@ -112,7 +126,7 @@ class ResetePasswordView extends StatelessWidget {
                                 Icons.lock_outline,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.confNewPass,
+                              hintText: AppStrings.confNewPass,
                             ),
                             SizedBox(
                               height: 16.h,
@@ -132,32 +146,34 @@ class ResetePasswordView extends StatelessWidget {
                                 Icons.code,
                                 color: AppColors.black,
                               ),
-                              labeltext: AppStrings.code,
+                              hintText: AppStrings.code,
                             ),
                             SizedBox(
                               height: 24.h,
                             ),
                             //!btn
-                            CustomBtn(
-                              onPressed: () {
-                                if (BlocProvider.of<AuthCubit>(context)
-                                    .resetPasswordKey
-                                    .currentState!
-                                    .validate()) {
-                                  customReplacementNavigate(
-                                      context, "/SignInView");
-                                }
-                              },
-                              text: AppStrings.resetPass,
-                            ),
+                            state is ResetPasswordLoadingState
+                                ? const CusotmLoadingIndicator()
+                                : CustomBtn(
+                                    onPressed: () {
+                                      if (BlocProvider.of<AuthCubit>(context)
+                                          .resetPasswordKey
+                                          .currentState!
+                                          .validate()) {
+                                        BlocProvider.of<AuthCubit>(context)
+                                            .resetPassword();
+                                      }
+                                    },
+                                    text: AppStrings.resetPass,
+                                  ),
                           ],
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ),
+                ),
+              );
+            },
           )
         ],
       ),

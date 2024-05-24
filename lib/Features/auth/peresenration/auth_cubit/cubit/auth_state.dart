@@ -40,10 +40,18 @@ final class ForgetPasswordLoadingState extends AuthState {}
 
 final class ForgetPasswordSucessState extends AuthState {}
 
-final class ForgetPasswordErrorState extends AuthState {}
+final class ForgetPasswordErrorState extends AuthState {
+  final String message;
+
+  ForgetPasswordErrorState({required this.message});
+}
 
 final class ResetPasswordLoadingState extends AuthState {}
 
 final class ResetPasswordSucessState extends AuthState {}
 
-final class ResetPasswordErrorState extends AuthState {}
+final class ResetPasswordErrorState extends AuthState {
+  final String message;
+
+  ResetPasswordErrorState({required this.message});
+}
