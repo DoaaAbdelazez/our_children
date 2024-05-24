@@ -84,7 +84,7 @@ class AuthCubit extends Cubit<AuthState> {
           ApiKey.password: signInPasswordController.text
         },
       );
-      auth = SigninModel.fromJson(response);
+      auth = SigninModel.fromJson(response!.data);
       final decodeToken = JwtDecoder.decode(auth!.results);
       CacheHelper().saveData(key: ApiKey.results, value: auth!.results);
       CacheHelper().saveData(key: ApiKey.id, value: decodeToken[ApiKey.id]);

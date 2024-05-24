@@ -1,5 +1,5 @@
 class EndPoint {
-  static const String baseUrl = 'http://backends-three.vercel.app/';
+  static const String baseUrl = 'https://backends-three.vercel.app/';
   static const String ourChildrenSignIn = 'auth/login';
   static const String ourChildrenRegister = 'auth/register';
   static const String ourChildrenSendForgetCode = 'auth/send-forget-code';

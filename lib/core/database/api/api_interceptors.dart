@@ -1,3 +1,5 @@
+import 'dart:core';
+
 import 'package:dio/dio.dart';
 
 class ApiInterceptors extends Interceptor {
@@ -11,13 +13,24 @@ class ApiInterceptors extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    // TODO: implement onResponse
+    //handel the response
+    // if (response.statusCode == 308) {
+    //   var newUri = response.headers['location']?.first;
+
+    //   if (newUri != null) {
+    //     //Re-send the request to the new URI
+    //     Options.lowercase = Uri.parse(newUri);
+    //     return handler.resolve(response);
+    //   }
+
     super.onResponse(response, handler);
+    //   }
+    //   return handler.next(response);
+    // }
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    // TODO: implement onError
     super.onError(err, handler);
   }
 }
