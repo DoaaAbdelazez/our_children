@@ -25,6 +25,7 @@ class EndPoint {
 
 class ApiKey {
   static const String success = 'success';
+  static const String status = 'status';
 
   static const String email = 'email';
   static const String password = 'password';
