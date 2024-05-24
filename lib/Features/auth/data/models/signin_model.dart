@@ -9,7 +9,7 @@ class SigninModel extends Equatable {
 
   factory SigninModel.fromJson(Map<String, dynamic> json) => SigninModel(
         success: json[ApiKey.success] as bool,
-        results: json[ApiKey.results] as String,
+        results: json[ApiKey.message] as String,
       );
 
   Map<String, dynamic> toJson() => {

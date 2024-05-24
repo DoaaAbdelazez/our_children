@@ -49,47 +49,47 @@ class CancleExeption extends ServerException {
   CancleExeption(super.messageModel);
 }
 
-
 handleDioException(e) {
-    switch (e.type) {
-      case DioExceptionType.badCertificate:
-        throw BadCertificateException(ErrorModel.fromJson(e.response!.data));
-      case DioExceptionType.connectionTimeout:
-        throw ConnectionTimeoutException(ErrorModel.fromJson(e.response!.data));
-      case DioExceptionType.receiveTimeout:
-      case DioExceptionType.connectionError:
-      case DioExceptionType.sendTimeout:
-        throw ServerException(ErrorModel.fromJson(e.response!.data));
+  switch (e.type) {
+    case DioExceptionType.badCertificate:
+      throw BadCertificateException(ErrorModel.fromJson(e.response!.data));
+    case DioExceptionType.connectionTimeout:
+      throw ConnectionTimeoutException(ErrorModel.fromJson(e.response!.data));
+    case DioExceptionType.receiveTimeout:
+    case DioExceptionType.connectionError:
+    case DioExceptionType.sendTimeout:
+      throw ServerException(ErrorModel.fromJson(e.response!.data));
 
-      case DioExceptionType.badResponse:
-        switch (e.response?.statusCode) {
-          case 400: //bad request
-            throw BadRequestException(ErrorModel.fromJson(e.response!.data));
+    case DioExceptionType.badResponse:
+      switch (e.response?.statusCode) {
+        case 400: //bad request
+          throw BadRequestException(ErrorModel.fromJson(e.response!.data));
 
-          case 401: //unauthorized
-            throw UnauthorizedException(ErrorModel.fromJson(e.response!.data));
+        case 401: //unauthorized
+          throw UnauthorizedException(ErrorModel.fromJson(e.response!.data));
 
-          case 403: //forbidden
-            throw ForbiddenException(ErrorModel.fromJson(e.response!.data));
+        case 403: //forbidden
+          throw ForbiddenException(ErrorModel.fromJson(e.response!.data));
 
-          case 404: //notFound
-            throw NotFoundException(ErrorModel.fromJson(e.response!.data));
+        case 404: //notFound
+          throw NotFoundException(ErrorModel.fromJson(e.response!.data));
 
-          case 409: //conflict
-            throw ConflictException(ErrorModel.fromJson(e.response!.data));
-          case 308: //conflict
-            throw ConflictException(
-                ErrorModel.fromJson({ApiKey.message: "Somthing went wrong"}));
+        case 409: //conflict
+          throw ConflictException(ErrorModel.fromJson(e.response!.data));
+        case 500: //conflict
+          throw BadResposneException(ErrorModel.fromJson(e.response!.data));
+        case 308: //conflict
+          throw ConflictException(
+              ErrorModel.fromJson({ApiKey.message: "Somthing went wrong"}));
 
-          // print(e.response);
-        }
-      case DioExceptionType.cancel:
-        throw CancleExeption(ErrorModel.fromJson(e.response!.data));
+        // print(e.response);
+      }
+    case DioExceptionType.cancel:
+      throw CancleExeption(ErrorModel.fromJson(e.response!.data));
 
-      case DioExceptionType.unknown:
-        throw ServerException(ErrorModel.fromJson(e.response!.data));
+    case DioExceptionType.unknown:
+      throw ServerException(ErrorModel.fromJson(e.response!.data));
 
-      // throw ServerException('badResponse');
-    }
+    // throw ServerException('badResponse');
   }
-
+}
