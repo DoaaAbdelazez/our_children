@@ -6,9 +6,10 @@ import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_c
 import 'package:our_children/Features/auth/peresenration/screens/forget_password_view.dart';
 import 'package:our_children/Features/choose_screen/choose_screen_view.dart';
 import 'package:our_children/Features/auth/peresenration/screens/splash_view.dart';
+import 'package:our_children/Features/home/presentation/Screens/all_user_screen.dart';
+import 'package:our_children/Features/home/presentation/Screens/resul_screen.dart';
 import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
 import 'package:our_children/core/database/api/dio_consumer.dart';
-import 'package:our_children/core/services/services_locator.dart';
 
 import '../../Features/First_Screen/first_screen_view.dart';
 import '../../Features/auth/peresenration/screens/resete_password_view.dart';
@@ -69,6 +70,20 @@ final GoRouter router = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => HomeCubit(),
         child: const ReportScreen(),
+      ),
+    ),
+    GoRoute(
+      path: "/ResulteScreen",
+      builder: (context, state) => BlocProvider(
+        create: (context) => HomeCubit(),
+        child: const ResulteScreen(),
+      ),
+    ),
+    GoRoute(
+      path: "/AllUserScreen",
+      builder: (context, state) => BlocProvider(
+        create: (context) => HomeCubit(),
+        child: const AllUserScreen(),
       ),
     ),
   ],

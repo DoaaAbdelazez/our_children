@@ -19,7 +19,7 @@ abstract class AppStrings {
   static const String explane = " عشان نسهل عليك هنعمل شوية خطوات ";
   static const String explane2 = " محتاجين شوية بيانات";
   static const String clickHer = " دوس هنا عشان نكمل!";
-  static const String searchFamily = " جاري البحث عن أهلهم";
+  static const String searchFamily = "جاري البحث عنهم";
   static const String searchTheme = " جاري البحث عنهم ";
   static const String search = " بحث ";
   static const String report = " تبليغ ";

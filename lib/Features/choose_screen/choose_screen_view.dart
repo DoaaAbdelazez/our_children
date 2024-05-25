@@ -39,7 +39,10 @@ class ChooseScreenView extends StatelessWidget {
                   height: 24.h,
                 ),
                 CustomButtonChoose(
-                    onPressed: () {}, text: AppStrings.searchFamily),
+                    onPressed: () {
+                      customNavigate(context, "/AllUserScreen");
+                    },
+                    text: AppStrings.searchFamily),
 
                 SizedBox(
                   height: 24.h,

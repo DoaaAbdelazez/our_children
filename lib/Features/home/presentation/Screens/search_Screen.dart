@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
+import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
@@ -92,10 +93,13 @@ class _SearchScreenState extends State<SearchScreen> {
                       //!bttn
                       CustomButtnHome(
                         onPressed: () {
-                          if (BlocProvider.of<HomeCubit>(context)
-                              .searchKey
-                              .currentState!
-                              .validate()) ;
+                          // if (BlocProvider.of<HomeCubit>(context)
+                          //     .searchKey
+                          //     .currentState!
+                          //     .validate()) {
+
+                          // }
+                          customNavigate(context, ('/ResulteScreen'));
                         },
                         text: AppStrings.done,
                       ),
