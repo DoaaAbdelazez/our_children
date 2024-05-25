@@ -19,4 +19,5 @@ final class ReportErrorState extends HomeState {}
 final class ChangeGroupState extends HomeState {}
 
 final class UploadSearchPic extends HomeState {}
+final class UploadReportPic extends HomeState {}
 final class ImagePickerState extends HomeState {}

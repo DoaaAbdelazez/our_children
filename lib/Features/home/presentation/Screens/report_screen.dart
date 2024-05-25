@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,37 +50,45 @@ class _ReportScreenState extends State<ReportScreen> {
                         height: 12.h,
                       ),
                       //!ImagePicker
-                      Container(
-                        alignment: Alignment.center,
-                        width: 243.w,
-                        height: 203.h,
-                        decoration: BoxDecoration(
-                            color: AppColors.white,
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: BlocProvider.of<HomeCubit>(context)
-                                      .reportPic ==
-                                  null
-                              ? Column(
-                                  children: [
-                                    Text(
-                                      AppStrings.clickToUploadPic,
-                                      style: CustomTextStyle.cairo400style20,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        BlocProvider.of<HomeCubit>(context)
-                                            .imagePicker();
-                                      },
-                                      child: const Icon(
+                      GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<HomeCubit>(context).imagePicker();
+                        },
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 243.w,
+                          height: 203.h,
+                          decoration: BoxDecoration(
+                              image: BlocProvider.of<HomeCubit>(context)
+                                          .reportPic ==
+                                      null
+                                  ? null
+                                  : DecorationImage(
+                                      image: FileImage(File(
+                                          BlocProvider.of<HomeCubit>(context)
+                                              .reportPic!
+                                              .path))),
+                              color: AppColors.white,
+                              borderRadius: BorderRadius.circular(15)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: BlocProvider.of<HomeCubit>(context)
+                                        .reportPic ==
+                                    null
+                                ? Column(
+                                    children: [
+                                      Text(
+                                        AppStrings.clickToUploadPic,
+                                        style: CustomTextStyle.cairo400style20,
+                                      ),
+                                      const Icon(
                                         Icons.camera_alt_outlined,
                                         size: 150,
                                       ),
-                                    ),
-                                  ],
-                                )
-                              : Container(),
+                                    ],
+                                  )
+                                : Container(),
+                          ),
                         ),
                       ),
                       SizedBox(

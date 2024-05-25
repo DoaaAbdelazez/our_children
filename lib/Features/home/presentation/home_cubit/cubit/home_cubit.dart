@@ -28,6 +28,11 @@ class HomeCubit extends Cubit<HomeState> {
     emit(UploadSearchPic());
   }
 
+  void uploadreportPic(XFile image) {
+    searchPic = image;
+    emit(UploadReportPic());
+  }
+
   void changeGroupVal(val) {
     groupValue = val;
     emit(ChangeGroupState());

@@ -53,50 +53,50 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       //!ImagePicker
                       Center(
-                        child: Container(
-                          alignment: Alignment.center,
-                          width: 300.w,
-                          height: 250.h,
-                          decoration: BoxDecoration(
-                              image: BlocProvider.of<HomeCubit>(context)
-                                          .searchPic ==
-                                      null
-                                  ? null
-                                  : DecorationImage(
-                                      image: FileImage(File(
-                                          BlocProvider.of<HomeCubit>(context)
-                                              .searchPic!
-                                              .path))),
-                              color: AppColors.white,
-                              borderRadius: BorderRadius.circular(15)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SingleChildScrollView(
-                              child: BlocProvider.of<HomeCubit>(context)
-                                          .searchPic ==
-                                      null
-                                  ? Column(
-                                      children: [
-                                        //!clickhere text
-                                        Text(
-                                          AppStrings.clickToUploadPic,
-                                          style:
-                                              CustomTextStyle.cairo400style20,
-                                        ),
-                                        //!camira icon
-                                        GestureDetector(
-                                          onTap: () {
+                        child: GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<HomeCubit>(context).imagePicker();
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: 300.w,
+                            height: 250.h,
+                            decoration: BoxDecoration(
+                                image: BlocProvider.of<HomeCubit>(context)
+                                            .searchPic ==
+                                        null
+                                    ? null
+                                    : DecorationImage(
+                                        image: FileImage(File(
                                             BlocProvider.of<HomeCubit>(context)
-                                                .imagePicker();
-                                          },
-                                          child: const Icon(
+                                                .searchPic!
+                                                .path))),
+                                color: AppColors.white,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SingleChildScrollView(
+                                child: BlocProvider.of<HomeCubit>(context)
+                                            .searchPic ==
+                                        null
+                                    ? Column(
+                                        children: [
+                                          //!clickhere text
+                                          Text(
+                                            AppStrings.clickToUploadPic,
+                                            style:
+                                                CustomTextStyle.cairo400style20,
+                                          ),
+                                          //!camira icon
+
+                                          const Icon(
                                             Icons.camera_alt_outlined,
                                             size: 200,
                                           ),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
+                                        ],
+                                      )
+                                    : Container(),
+                              ),
                             ),
                           ),
                         ),
