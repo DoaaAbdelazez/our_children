@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:our_children/core/utils/app_assets.dart';
+import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
 
@@ -28,11 +29,15 @@ class AllUserScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
                     itemBuilder: (context, index) {
-                      return FlutterLogo();
+                      return Card(
+                        child: Center(child: Text('Item $index')),
+                      );
                     },
                     itemCount: 6,
                   ),
