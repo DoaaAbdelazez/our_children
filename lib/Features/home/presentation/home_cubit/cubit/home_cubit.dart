@@ -18,6 +18,7 @@ class HomeCubit extends Cubit<HomeState> {
     ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) => searchPic = value);
+    print(searchPic!.path);
     emit(ImagePickerState());
   }
 
