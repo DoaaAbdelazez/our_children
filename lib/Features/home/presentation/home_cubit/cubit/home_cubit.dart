@@ -14,6 +14,12 @@ class HomeCubit extends Cubit<HomeState> {
   TextEditingController cityReportController = TextEditingController();
   TextEditingController phoneReportController = TextEditingController();
   String groupValue = 'boy';
+  void imagePicker() {
+    ImagePicker()
+        .pickImage(source: ImageSource.gallery)
+        .then((value) => searchPic = value);
+    emit(ImagePickerState());
+  }
 
   void uploadSearchPic(XFile image) {
     searchPic = image;
