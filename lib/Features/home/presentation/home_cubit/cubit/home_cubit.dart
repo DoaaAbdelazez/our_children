@@ -9,16 +9,17 @@ class HomeCubit extends Cubit<HomeState> {
   GlobalKey<FormState> searchKey = GlobalKey();
   GlobalKey<FormState> reportKey = GlobalKey();
   XFile? searchPic;
+  XFile? reportPic;
   TextEditingController nameReportController = TextEditingController();
   TextEditingController ageReportController = TextEditingController();
   TextEditingController cityReportController = TextEditingController();
   TextEditingController phoneReportController = TextEditingController();
   String groupValue = 'boy';
-  void imagePicker() {
-    ImagePicker()
+  Future<void> imagePicker() async {
+    await ImagePicker()
         .pickImage(source: ImageSource.gallery)
         .then((value) => searchPic = value);
-    print(searchPic!.path);
+    // print(searchPic!.path);
     emit(ImagePickerState());
   }
 

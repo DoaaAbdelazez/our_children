@@ -30,54 +30,62 @@ class _ReportScreenState extends State<ReportScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(30),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  //! Report_Text
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                    child: Text(
-                      AppStrings.report,
-                      style: CustomTextStyle.cairo400style30,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  //!ImagePicker
-                  Container(
-                    alignment: Alignment.center,
-                    width: 243.w,
-                    height: 203.h,
-                    decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            AppStrings.clickToUploadPic,
-                            style: CustomTextStyle.cairo400style20,
-                          ),
-                          GestureDetector(
-                            child: const Icon(
-                              Icons.camera_alt_outlined,
-                              size: 150,
-                            ),
-                          ),
-                        ],
+            child: BlocConsumer<HomeCubit, HomeState>(
+              listener: (context, state) {},
+              builder: (context, state) {
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      //! Report_Text
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Text(
+                          AppStrings.report,
+                          style: CustomTextStyle.cairo400style30,
+                        ),
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 12.h,
-                  ),
-                  //!Forms
-                  BlocConsumer<HomeCubit, HomeState>(
-                    listener: (context, state) {},
-                    builder: (context, state) {
-                      return Form(
+                      SizedBox(
+                        height: 12.h,
+                      ),
+                      //!ImagePicker
+                      Container(
+                        alignment: Alignment.center,
+                        width: 243.w,
+                        height: 203.h,
+                        decoration: BoxDecoration(
+                            color: AppColors.white,
+                            borderRadius: BorderRadius.circular(15)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: BlocProvider.of<HomeCubit>(context)
+                                      .reportPic ==
+                                  null
+                              ? Column(
+                                  children: [
+                                    Text(
+                                      AppStrings.clickToUploadPic,
+                                      style: CustomTextStyle.cairo400style20,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () {
+                                        BlocProvider.of<HomeCubit>(context)
+                                            .imagePicker();
+                                      },
+                                      child: const Icon(
+                                        Icons.camera_alt_outlined,
+                                        size: 150,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : Container(),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 12.h,
+                      ),
+                      //!Forms
+                      Form(
                         key: BlocProvider.of<HomeCubit>(context).reportKey,
                         child: Column(
                           children: [
@@ -235,11 +243,11 @@ class _ReportScreenState extends State<ReportScreen> {
                             ),
                           ],
                         ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ],
