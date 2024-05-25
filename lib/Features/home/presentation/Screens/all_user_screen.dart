@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:our_children/Features/home/presentation/widgets/custombuttn.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_strings.dart';
@@ -21,6 +22,7 @@ class AllUserScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(50),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 //!text
                 Text(
@@ -30,7 +32,6 @@ class AllUserScreen extends StatelessWidget {
                 Expanded(
                   child: GridView.builder(
                     shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
@@ -42,6 +43,10 @@ class AllUserScreen extends StatelessWidget {
                     itemCount: 6,
                   ),
                 ),
+                CustomButtnHome(
+                  onPressed: () {},
+                  text: AppStrings.done,
+                )
               ],
             ),
           ),

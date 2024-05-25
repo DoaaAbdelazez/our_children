@@ -22,6 +22,7 @@ abstract class AppStrings {
   static const String searchFamily = "جاري البحث عنهم";
   static const String searchTheme = " جاري البحث عنهم ";
   static const String search = " بحث ";
+  static const String thanks = " شكراً لحضرتك ";
   static const String report = " تبليغ ";
   static const String isForgetPassword = " هل نسيت كلمة السر؟ ";
   static const String pleseWriteEmail =
