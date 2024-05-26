@@ -7,7 +7,7 @@ class CreateChildModel extends Equatable {
 
   const CreateChildModel({this.success, this.id});
 
-  factory CreateChildModel.fromSuccessTrueId664e2d74d91f8caa816205b1(
+  factory CreateChildModel.fromJson(
       Map<String, dynamic> json) {
     return CreateChildModel(
       success: json[ApiKey.success] as bool?,

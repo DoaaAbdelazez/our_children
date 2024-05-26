@@ -19,7 +19,7 @@ void main() async {
           create: (context) => AuthCubit(DioConsumer(Dio())),
         ),
         BlocProvider(
-          create: (context) => HomeCubit(),
+          create: (context) => HomeCubit(DioConsumer(Dio())),
         ),
       ],
       child: const OurChildren(),

@@ -61,28 +61,28 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: "/SearchScreen",
       builder: (context, state) => BlocProvider(
-        create: (context) => HomeCubit(),
+        create: (context) => HomeCubit(DioConsumer(Dio())),
         child: const SearchScreen(),
       ),
     ),
     GoRoute(
       path: "/ReportScreen",
       builder: (context, state) => BlocProvider(
-        create: (context) => HomeCubit(),
+        create: (context) => HomeCubit(DioConsumer(Dio())),
         child: const ReportScreen(),
       ),
     ),
     GoRoute(
       path: "/ResulteScreen",
       builder: (context, state) => BlocProvider(
-        create: (context) => HomeCubit(),
+        create: (context) => HomeCubit(DioConsumer(Dio())),
         child: const ResulteScreen(),
       ),
     ),
     GoRoute(
       path: "/AllUserScreen",
       builder: (context, state) => BlocProvider(
-        create: (context) => HomeCubit(),
+        create: (context) => HomeCubit(DioConsumer(Dio())),
         child: const AllUserScreen(),
       ),
     ),

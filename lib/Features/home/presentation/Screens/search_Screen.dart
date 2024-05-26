@@ -55,7 +55,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       Center(
                         child: GestureDetector(
                           onTap: () {
-                            BlocProvider.of<HomeCubit>(context).imagePicker();
+                            BlocProvider.of<HomeCubit>(context).imagePickerSearch();
                           },
                           child: Container(
                             alignment: Alignment.center,

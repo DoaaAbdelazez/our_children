@@ -3,11 +3,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
+import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
+import 'package:our_children/core/widgets/custom_loading_indicator.dart';
 import '../../../../core/utils/app_strings.dart';
+
 import '../widgets/custom_text_form.dart';
 import '../widgets/custombuttn.dart';
 
@@ -33,7 +37,9 @@ class _ReportScreenState extends State<ReportScreen> {
           Padding(
             padding: const EdgeInsets.all(30),
             child: BlocConsumer<HomeCubit, HomeState>(
-              listener: (context, state) {},
+              listener: (context, state) {
+                customNavigate(context, ('/ChooseScreenView'));
+              },
               builder: (context, state) {
                 return SingleChildScrollView(
                   child: Column(
@@ -52,7 +58,8 @@ class _ReportScreenState extends State<ReportScreen> {
                       //!ImagePicker
                       GestureDetector(
                         onTap: () {
-                          BlocProvider.of<HomeCubit>(context).imagePicker();
+                          BlocProvider.of<HomeCubit>(context)
+                              .imagePickerreport();
                         },
                         child: Container(
                           alignment: Alignment.center,
@@ -152,7 +159,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                   children: [
                                     Radio(
                                       activeColor: AppColors.primaryColor,
-                                      value: 'boy',
+                                      value: 'male',
                                       groupValue:
                                           BlocProvider.of<HomeCubit>(context)
                                               .groupValue,
@@ -177,7 +184,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                   children: [
                                     Radio(
                                       activeColor: AppColors.primaryColor,
-                                      value: 'girl',
+                                      value: 'female',
                                       groupValue:
                                           BlocProvider.of<HomeCubit>(context)
                                               .groupValue,
@@ -242,15 +249,21 @@ class _ReportScreenState extends State<ReportScreen> {
                               height: 12.h,
                             ),
                             //!bttn
-                            CustomButtnHome(
-                              onPressed: () {
-                                if (BlocProvider.of<HomeCubit>(context)
-                                    .reportKey
-                                    .currentState!
-                                    .validate()) ;
-                              },
-                              text: AppStrings.done,
-                            ),
+                            state is CreateChildLoadingState
+                                ? const CusotmLoadingIndicator()
+                                : CustomButtnHome(
+                                    onPressed: () {
+                                      if (BlocProvider.of<HomeCubit>(context)
+                                          .reportKey
+                                          .currentState!
+                                          .validate()) {
+                                        BlocProvider.of<HomeCubit>(context)
+                                            .createChild();
+                                      }
+                                      ;
+                                    },
+                                    text: AppStrings.done,
+                                  ),
                           ],
                         ),
                       ),
