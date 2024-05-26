@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_cubit.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
+import 'package:our_children/core/database/cache/cache_helper.dart';
+import 'package:our_children/core/services/services_locator.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -11,7 +13,7 @@ import '../../../../core/utils/app_text_style.dart';
 import '../../../../core/widgets/custom_loading_indicator.dart';
 import '../../../../core/widgets/custome_button.dart';
 
-import '../widgets/custom-text_feild.dart';
+import '../widgets/custom_text_feild.dart';
 import '../widgets/terms_and_condation.dart';
 
 class SignInView extends StatelessWidget {
@@ -71,7 +73,14 @@ class SignInView extends StatelessWidget {
                             content: Text("تم تسجيل الدخول"),
                           ),
                         );
-                        customReplacementNavigate(context, "/RulesScreenView");
+                        if (getIt<CacheHelper>().getData(key: 'RulesVisited') !=
+                            null) {
+                          customReplacementNavigate(
+                              context, ('/ChooseScreenView'));
+                        } else {
+                          customReplacementNavigate(
+                              context, "/RulesScreenView");
+                        }
                       } else if (state is SignInErrorState) {
                         ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(content: Text(state.errMessage)));
@@ -196,7 +205,7 @@ class SignInView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppStrings.noHaveAccount,
+                    const Text(AppStrings.noHaveAccount,
                         style: CustomTextStyle.almarai400style14),
                     TextButton(
                       onPressed: () {

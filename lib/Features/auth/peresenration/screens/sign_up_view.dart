@@ -10,7 +10,7 @@ import 'package:our_children/core/widgets/custom_loading_indicator.dart';
 import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/widgets/custome_button.dart';
-import '../widgets/custom-text_feild.dart';
+import '../widgets/custom_text_feild.dart';
 import '../widgets/terms_and_condation.dart';
 
 class SignUpView extends StatelessWidget {
@@ -230,7 +230,7 @@ class SignUpView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(AppStrings.haveAccount,
+                    const Text(AppStrings.haveAccount,
                         style: CustomTextStyle.almarai400style14),
                     TextButton(
                       onPressed: () {

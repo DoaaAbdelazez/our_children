@@ -3,9 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
-import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
@@ -38,7 +36,23 @@ class _ReportScreenState extends State<ReportScreen> {
             padding: const EdgeInsets.all(30),
             child: BlocConsumer<HomeCubit, HomeState>(
               listener: (context, state) {
-                customNavigate(context, ('/ChooseScreenView'));
+                if (state is AddfaceSuccessState) {
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("تمت بنجاح"),
+                    ),
+                  );
+                } else if (state is CreateChildErrorState) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Invalid Information')));
+                } else if (state is AddFaceErrorState) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.error),
+                    ),
+                  );
+                }
               },
               builder: (context, state) {
                 return SingleChildScrollView(
@@ -129,7 +143,7 @@ class _ReportScreenState extends State<ReportScreen> {
                             ),
                             //age
                             Text(
-                              AppStrings.ageLose,
+                              AppStrings.location,
                               style: CustomTextStyle.aJannatLT400style24,
                             ),
                             SizedBox(
@@ -137,7 +151,7 @@ class _ReportScreenState extends State<ReportScreen> {
                               width: double.infinity,
                               child: CustomTextForm(
                                 controller: BlocProvider.of<HomeCubit>(context)
-                                    .ageReportController,
+                                    .locationController,
                                 validate: (data) {
                                   if (data!.isEmpty) {
                                     return AppStrings.enterAge;
@@ -154,52 +168,81 @@ class _ReportScreenState extends State<ReportScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                //boy
-                                Row(
-                                  children: [
-                                    Radio(
-                                      activeColor: AppColors.primaryColor,
-                                      value: 'male',
-                                      groupValue:
-                                          BlocProvider.of<HomeCubit>(context)
-                                              .groupValue,
-                                      onChanged: (val) {
-                                        BlocProvider.of<HomeCubit>(context)
-                                            .changeGroupVal(val);
-                                      },
-                                    ),
-                                    Text(
-                                      AppStrings.boy,
-                                      style:
-                                          CustomTextStyle.aJannatLT400style24,
-                                    ),
-                                  ],
+                                CustomButtnHome(
+                                  text: AppStrings.boy,
+                                  color: BlocProvider.of<HomeCubit>(context)
+                                              .sellectedGander !=
+                                          'male'
+                                      ? AppColors.darkblue
+                                      : null,
+                                  onPressed: () {
+                                    BlocProvider.of<HomeCubit>(context)
+                                        .changeSellectedGander('male');
+                                  },
+                                ),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                CustomButtnHome(
+                                  text: AppStrings.girl,
+                                  color: BlocProvider.of<HomeCubit>(context)
+                                              .sellectedGander !=
+                                          'female'
+                                      ? AppColors.darkblue
+                                      : null,
+                                  onPressed: () {
+                                    BlocProvider.of<HomeCubit>(context)
+                                        .changeSellectedGander('female');
+                                  },
                                 ),
 
-                                SizedBox(
-                                  width: 60.w,
-                                ),
-                                //girl
-                                Row(
-                                  children: [
-                                    Radio(
-                                      activeColor: AppColors.primaryColor,
-                                      value: 'female',
-                                      groupValue:
-                                          BlocProvider.of<HomeCubit>(context)
-                                              .groupValue,
-                                      onChanged: (val) {
-                                        BlocProvider.of<HomeCubit>(context)
-                                            .changeGroupVal(val);
-                                      },
-                                    ),
-                                    Text(
-                                      AppStrings.girl,
-                                      style:
-                                          CustomTextStyle.aJannatLT400style24,
-                                    ),
-                                  ],
-                                ),
+                                //boy
+                                // Row(
+                                //   children: [
+                                //     Radio(
+                                //       activeColor: AppColors.primaryColor,
+                                //       value: 'male',
+                                //       groupValue:
+                                //           BlocProvider.of<HomeCubit>(context)
+                                //               .groupValue,
+                                //       onChanged: (val) {
+                                //         // BlocProvider.of<HomeCubit>(context)
+                                //         //     .changeGroupVal(val);
+                                //       },
+                                //     ),
+                                //     Text(
+                                //       AppStrings.boy,
+                                //       style:
+                                //           CustomTextStyle.aJannatLT400style24,
+                                //     ),
+                                //   ],
+                                // ),
+
+                                // SizedBox(
+                                //   width: 60.w,
+                                // ),
+                                // //girl
+                                // Row(
+                                //   children: [
+                                //     Radio(
+
+                                //       activeColor: AppColors.primaryColor,
+                                //       value: 'female',
+                                //       groupValue:
+                                //           BlocProvider.of<HomeCubit>(context)
+                                //               .groupValue,
+                                //       onChanged: (val) {
+                                //         BlocProvider.of<HomeCubit>(context)
+                                //             .changeGroupVal(val);
+                                //       },
+                                //     ),
+                                //     Text(
+                                //       AppStrings.girl,
+                                //       style:
+                                //           CustomTextStyle.aJannatLT400style24,
+                                //     ),
+                                //   ],
+                                // ),
                               ],
                             ),
 
@@ -249,18 +292,24 @@ class _ReportScreenState extends State<ReportScreen> {
                               height: 12.h,
                             ),
                             //!bttn
-                            state is CreateChildLoadingState
+                            state is CreateChildLoadingState ||
+                                    state is AddFaceLoadingState
                                 ? const CusotmLoadingIndicator()
                                 : CustomButtnHome(
                                     onPressed: () {
                                       if (BlocProvider.of<HomeCubit>(context)
-                                          .reportKey
-                                          .currentState!
-                                          .validate()) {
+                                              .reportKey
+                                              .currentState!
+                                              .validate() &&
+                                          BlocProvider.of<HomeCubit>(context)
+                                                  .sellectedGander !=
+                                              null &&
+                                          BlocProvider.of<HomeCubit>(context)
+                                                  .reportPic !=
+                                              null) {
                                         BlocProvider.of<HomeCubit>(context)
                                             .createChild();
                                       }
-                                      ;
                                     },
                                     text: AppStrings.done,
                                   ),

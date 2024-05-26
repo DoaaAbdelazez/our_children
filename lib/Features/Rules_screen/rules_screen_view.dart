@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:our_children/core/database/cache/cache_helper.dart';
+import 'package:our_children/core/services/services_locator.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
@@ -53,6 +55,8 @@ class RulesScreenView extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 25, left: 25),
                   child: CustomBtn(
                       onPressed: () {
+                        getIt<CacheHelper>()
+                            .saveData(key: 'RulesVisited', value: true);
                         customReplacementNavigate(context, "/ChooseScreenView");
                       },
                       text: AppStrings.clickHer),

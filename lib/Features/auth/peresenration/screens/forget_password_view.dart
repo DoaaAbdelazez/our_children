@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_cubit.dart';
 import 'package:our_children/Features/auth/peresenration/auth_cubit/cubit/auth_state.dart';
-import 'package:our_children/Features/auth/peresenration/widgets/custom-text_feild.dart';
+import 'package:our_children/Features/auth/peresenration/widgets/custom_text_feild.dart';
 import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
@@ -55,14 +55,14 @@ class ForgetPasswordView extends StatelessWidget {
                       SizedBox(
                         height: 54.h,
                       ),
-                      Text(
+                      const Text(
                         AppStrings.isForgetPassword,
                         style: CustomTextStyle.cairo700style24,
                       ),
                       SizedBox(
                         height: 24.h,
                       ),
-                      Text(
+                      const Text(
                         AppStrings.pleseWriteEmail,
                         style: CustomTextStyle.cairo400style16,
                       ),

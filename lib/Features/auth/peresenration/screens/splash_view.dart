@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:our_children/core/database/api/end_points.dart';
+import 'package:our_children/core/database/cache/cache_helper.dart';
+import 'package:our_children/core/services/services_locator.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
 
@@ -40,7 +43,7 @@ class _SplashViewState extends State<SplashView> {
               SizedBox(
                 height: 10.h,
               ),
-              Text(
+              const Text(
                 AppStrings.appName,
                 style: CustomTextStyle.inter700style24,
               ),
@@ -54,6 +57,10 @@ class _SplashViewState extends State<SplashView> {
 
 void delayedNavigate(context) {
   Future.delayed(const Duration(seconds: 2), () {
-    customReplacementNavigate(context, "/FirstScreenView");
+    if (getIt<CacheHelper>().getData(key: ApiKey.results) != null) {
+      customReplacementNavigate(context, ('/ChooseScreenView'));
+    } else {
+      customReplacementNavigate(context, "/FirstScreenView");
+    }
   });
 }

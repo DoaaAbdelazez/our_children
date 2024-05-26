@@ -10,6 +10,16 @@ final class SearchSucessState extends HomeState {}
 
 final class SearchErrorState extends HomeState {}
 
+final class AddFaceLoadingState extends HomeState {}
+
+final class AddfaceSuccessState extends HomeState {}
+
+final class AddFaceErrorState extends HomeState {
+  final String error;
+
+  AddFaceErrorState({required this.error});
+}
+
 final class CreateChildLoadingState extends HomeState {}
 
 final class CreateChildSucessState extends HomeState {}

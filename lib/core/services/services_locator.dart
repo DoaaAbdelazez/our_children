@@ -15,5 +15,5 @@ void setupServiceLocator() {
       ),
     ),
   );
-  getIt.registerSingleton<HomeCubit>(HomeCubit());
+  getIt.registerSingleton<HomeCubit>(HomeCubit(DioConsumer(Dio())));
 }

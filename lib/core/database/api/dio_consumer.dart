@@ -1,15 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:our_children/core/errors/error_model.dart';
 import '../../errors/exceptions.dart';
 import 'api_consumer.dart';
 import 'api_interceptors.dart';
-import 'end_points.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;
 
   DioConsumer(this.dio) {
-    dio.options.baseUrl = EndPoint.baseUrl;
     dio.interceptors.add(ApiInterceptors());
     dio.interceptors.add(LogInterceptor(
       request: true,
@@ -25,7 +22,7 @@ class DioConsumer extends ApiConsumer {
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    isFormData = false,
   }) async {
     try {
       var res = await dio.delete(
@@ -44,7 +41,7 @@ class DioConsumer extends ApiConsumer {
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    isFormData = false,
   }) async {
     try {
       var res = await dio.get(
@@ -63,7 +60,7 @@ class DioConsumer extends ApiConsumer {
     String path, {
     Object? data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    isFormData = false,
   }) async {
     try {
       var res = await dio.patch(
@@ -80,14 +77,14 @@ class DioConsumer extends ApiConsumer {
   @override
   Future post(
     String path, {
-    Object? data,
+    dynamic data,
     Map<String, dynamic>? queryParameters,
-    bool isFromData = false,
+    isFormData = false,
   }) async {
     try {
       var res = await dio.post(
         path,
-        data: data,
+        data: isFormData ? FormData.fromMap(data) : data,
         queryParameters: queryParameters,
       );
       return res.data;
@@ -95,6 +92,4 @@ class DioConsumer extends ApiConsumer {
       handleDioException(e);
     }
   }
-
-  
 }

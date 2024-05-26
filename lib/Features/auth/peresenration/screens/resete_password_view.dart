@@ -10,7 +10,7 @@ import '../../../../core/functions/navigation.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_btn.dart';
-import '../widgets/custom-text_feild.dart';
+import '../widgets/custom_text_feild.dart';
 
 class ResetePasswordView extends StatelessWidget {
   const ResetePasswordView({super.key});
@@ -57,7 +57,7 @@ class ResetePasswordView extends StatelessWidget {
                       SizedBox(
                         height: 40.h,
                       ),
-                      Text(
+                      const Text(
                         AppStrings.resetPass,
                         style: CustomTextStyle.cairo700style24,
                       ),

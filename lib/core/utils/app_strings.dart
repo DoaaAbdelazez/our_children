@@ -33,7 +33,7 @@ abstract class AppStrings {
   static const String confNewPass = "تأكيد كلمة السر ";
   static const String code = "كتابة الكود";
   static const String nameLose = "أسم المفقود";
-  static const String ageLose = "سن المفقود";
+  static const String location = "العنوان بالتفصيل";
   static const String clickToUploadPic = " دوس هنا عشان ترفع صورة";
   static const String boy = "ولد";
   static const String girl = "بنت";

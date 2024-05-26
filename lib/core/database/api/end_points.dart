@@ -1,14 +1,16 @@
 class EndPoint {
-  static const String baseUrl = 'https://backends-three.vercel.app/';
-  static const String ourChildrenSignIn = 'auth/login';
-  static const String ourChildrenRegister = 'auth/register';
-  static const String ourChildrenSendForgetCode = 'auth/send-forget-code';
-  static const String ourChildrenResetPassword = 'auth/reset-password';
-  static const String ourChildrenCreatePerson = 'person/create';
-  static const String ourChildrengetLostPerson = 'api/lost/';
-  static const String ourChildrenGetAllFound = 'GETfound/allusers';
-  static const String ourChildrenlogout = 'auth/logout';
-  static const String ourChildrenDeleteRequest = 'delete/';
+  static const String backEndbaseUrl = 'https://backends-three.vercel.app/';
+  static const String aibaseUrl = 'https://014c-156-193-21-22.ngrok-free.app/';
+  static const String ourChildrenSignIn = '${backEndbaseUrl}auth/login';
+  static const String ourChildrenRegister = '${backEndbaseUrl}auth/register';
+  static const String ourChildrenSendForgetCode = '${backEndbaseUrl}auth/send-forget-code';
+  static const String ourChildrenResetPassword = '${backEndbaseUrl}auth/reset-password';
+  static const String ourChildrenCreatePerson = '${backEndbaseUrl}person/create';
+  static const String ourChildrengetLostPerson = '${backEndbaseUrl}api/lost/';
+  static const String ourChildrenGetAllFound = '${backEndbaseUrl}GETfound/allusers';
+  static const String ourChildrenlogout = '${backEndbaseUrl}auth/logout';
+  static const String ourChildrenDeleteRequest = '${backEndbaseUrl}delete/';
+  static const String ourChildrenAddFace = '${aibaseUrl}add_face';
 
   static String getrequestEndPoint(id) {
     return '$ourChildrengetLostPerson$id';
@@ -41,4 +43,6 @@ class ApiKey {
   static const String governorate = 'governorate';
   static const String phone = 'phone';
   static const String forgetCode = 'forgetCode';
+  static const String userId = 'user_id';
+  static const String file = 'file';
 }

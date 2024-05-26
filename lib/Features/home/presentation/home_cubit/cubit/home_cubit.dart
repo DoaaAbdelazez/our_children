@@ -5,6 +5,7 @@ import 'package:our_children/Features/home/data/models/create_child_model.dart';
 import 'package:our_children/core/database/api/api_consumer.dart';
 import 'package:our_children/core/database/api/end_points.dart';
 import 'package:our_children/core/errors/exceptions.dart';
+import 'package:our_children/core/utils/commons.dart';
 
 part 'home_state.dart';
 
@@ -16,10 +17,10 @@ class HomeCubit extends Cubit<HomeState> {
   XFile? searchPic;
   XFile? reportPic;
   TextEditingController nameReportController = TextEditingController();
-  TextEditingController ageReportController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
   TextEditingController cityReportController = TextEditingController();
   TextEditingController phoneReportController = TextEditingController();
-  String groupValue = 'boy';
+  String? sellectedGander;
   Future<void> imagePickerSearch() async {
     await ImagePicker()
         .pickImage(source: ImageSource.gallery)
@@ -36,18 +37,18 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ImagePickerState());
   }
 
-  void uploadSearchPic(XFile image) {
-    searchPic = image;
-    emit(UploadSearchPic());
-  }
+  // void uploadSearchPic(XFile image) {
+  //   searchPic = image;
+  //   emit(UploadSearchPic());
+  // }
 
-  void uploadreportPic(XFile image) {
-    searchPic = image;
-    emit(UploadReportPic());
-  }
+  // void uploadreportPic(XFile image) {
+  //   searchPic = image;
+  //   emit(UploadReportPic());
+  // }
 
-  void changeGroupVal(val) {
-    groupValue = val;
+  void changeSellectedGander(String val) {
+    sellectedGander = val;
     emit(ChangeGroupState());
   }
 
@@ -60,16 +61,34 @@ class HomeCubit extends Cubit<HomeState> {
         isFormData: true,
         data: {
           ApiKey.name: nameReportController.text,
-          ApiKey.location: cityReportController.text,
+          ApiKey.location: locationController.text,
+          ApiKey.governorate: cityReportController.text,
           ApiKey.phone: phoneReportController.text,
-          ApiKey.gender: groupValue
-          
+          ApiKey.gender: sellectedGander
         },
       );
       createChildModel = CreateChildModel.fromJson(response);
+      await addFace(createChildModel!.id!);
       emit(CreateChildSucessState());
     } on ServerException catch (e) {
       emit(CreateChildErrorState(message: e.errorModel.message));
+    }
+  }
+
+  addFace(String userId) async {
+    try {
+      emit(AddFaceLoadingState());
+      await api.post(
+        EndPoint.ourChildrenAddFace,
+        data: {
+          ApiKey.userId: userId,
+          ApiKey.file: await uploadImageToAPI(reportPic!),
+        },
+        isFormData: true,
+      );
+      emit(AddfaceSuccessState());
+    } on ServerException catch (e) {
+      emit(AddFaceErrorState(error: e.errorModel.message));
     }
   }
 }
