@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:our_children/Features/home/data/models/create_child_model.dart';
+import 'package:our_children/Features/home/data/models/search_result_model.dart';
 import 'package:our_children/core/database/api/api_consumer.dart';
 import 'package:our_children/core/database/api/end_points.dart';
 import 'package:our_children/core/errors/exceptions.dart';
@@ -89,6 +90,25 @@ class HomeCubit extends Cubit<HomeState> {
       emit(AddfaceSuccessState());
     } on ServerException catch (e) {
       emit(AddFaceErrorState(error: e.errorModel.message));
+    }
+  }
+
+  recognizeFace() async {
+    try {
+      emit(RecognizeFaceLoadingState());
+      final response = await api.post(
+        EndPoint.ourChildrenRecognizeFace,
+        data: {
+          ApiKey.file: await uploadImageToAPI(searchPic!),
+        },
+        isFormData: true,
+      );
+
+      emit(RecognizeFaceSuccessState(
+          yourimage: searchPic!,
+          resultModel: SearchResultModel.fromJson(response)));
+    } on ServerException catch (e) {
+      emit(RecognizeFaceErrorState(error: e.errorModel.message));
     }
   }
 }

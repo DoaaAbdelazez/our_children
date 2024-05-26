@@ -72,13 +72,13 @@ final GoRouter router = GoRouter(
         child: const ReportScreen(),
       ),
     ),
-    GoRoute(
-      path: "/ResulteScreen",
-      builder: (context, state) => BlocProvider(
-        create: (context) => HomeCubit(DioConsumer(Dio())),
-        child: const ResulteScreen(),
-      ),
-    ),
+    // GoRoute(
+    //   path: "/ResulteScreen",
+    //   builder: (context, state) => BlocProvider(
+    //     create: (context) => HomeCubit(DioConsumer(Dio())),
+    //     child: const ResulteScreen(),
+    //   ),
+    // ),
     GoRoute(
       path: "/AllUserScreen",
       builder: (context, state) => BlocProvider(

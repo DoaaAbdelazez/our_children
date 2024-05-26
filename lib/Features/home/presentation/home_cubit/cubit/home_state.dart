@@ -20,6 +20,21 @@ final class AddFaceErrorState extends HomeState {
   AddFaceErrorState({required this.error});
 }
 
+final class RecognizeFaceLoadingState extends HomeState {}
+
+final class RecognizeFaceSuccessState extends HomeState {
+  final SearchResultModel resultModel;
+  final XFile yourimage;
+
+RecognizeFaceSuccessState({required this.yourimage, required this.resultModel});
+}
+
+final class RecognizeFaceErrorState extends HomeState {
+  final String error;
+
+  RecognizeFaceErrorState({required this.error});
+}
+
 final class CreateChildLoadingState extends HomeState {}
 
 final class CreateChildSucessState extends HomeState {}

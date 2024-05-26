@@ -11,6 +11,7 @@ class EndPoint {
   static const String ourChildrenlogout = '${backEndbaseUrl}auth/logout';
   static const String ourChildrenDeleteRequest = '${backEndbaseUrl}delete/';
   static const String ourChildrenAddFace = '${aibaseUrl}add_face';
+  static const String ourChildrenRecognizeFace = '${aibaseUrl}recognize';
 
   static String getrequestEndPoint(id) {
     return '$ourChildrengetLostPerson$id';

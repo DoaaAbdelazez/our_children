@@ -1,17 +1,17 @@
-
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:our_children/Features/home/presentation/Screens/resul_screen.dart';
 
 import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
-import 'package:our_children/core/functions/navigation.dart';
+
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
 import 'package:our_children/core/utils/app_text_style.dart';
+import 'package:our_children/core/widgets/custom_loading_indicator.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../widgets/custombuttn.dart';
 
@@ -26,7 +26,30 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is RecognizeFaceSuccessState) {
+          if (state is AddfaceSuccessState) {
+            Navigator.pop(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("تمت بنجاح"),
+              ),
+            );
+          }
+          // print(BlocProvider.of<HomeCubit>(context)
+          //     .searchResultList!
+          //     .nearestFaces[0]
+          //     .image);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ResulteScreen(
+                      yourImage: state.yourimage,
+                      resultModel: state.resultModel,
+                    )),
+          );
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           body: Stack(
@@ -43,8 +66,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: Column(
                     children: [
                       //! search_Text
-                      Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10),
                         child: Text(
                           AppStrings.search,
                           style: CustomTextStyle.cairo400style30,
@@ -57,7 +80,8 @@ class _SearchScreenState extends State<SearchScreen> {
                       Center(
                         child: GestureDetector(
                           onTap: () {
-                            BlocProvider.of<HomeCubit>(context).imagePickerSearch();
+                            BlocProvider.of<HomeCubit>(context)
+                                .imagePickerSearch();
                           },
                           child: Container(
                             alignment: Alignment.center,
@@ -81,7 +105,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 child: BlocProvider.of<HomeCubit>(context)
                                             .searchPic ==
                                         null
-                                    ? Column(
+                                    ? const Column(
                                         children: [
                                           //!clickhere text
                                           Text(
@@ -91,7 +115,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                           ),
                                           //!camira icon
 
-                                          const Icon(
+                                          Icon(
                                             Icons.camera_alt_outlined,
                                             size: 200,
                                           ),
@@ -107,19 +131,20 @@ class _SearchScreenState extends State<SearchScreen> {
                         height: 100.h,
                       ),
                       //!bttn
-                      CustomButtnHome(
-                        onPressed: () {
-                          // if (BlocProvider.of<HomeCubit>(context)
-                          //     .searchKey
-                          //     .currentState!
-                          //     .validate()) {
-
-                          // }
-                          customNavigate(context, ('/ResulteScreen'));
-                        },
-                        text: AppStrings.done,
-                      ),
-                    ],
+                  state is RecognizeFaceLoadingState
+                          ? const CusotmLoadingIndicator()
+                          : CustomButtnHome(
+                              onPressed: () {
+                                if (BlocProvider.of<HomeCubit>(context)
+                                        .searchPic !=
+                                    null) {
+                                  BlocProvider.of<HomeCubit>(context)
+                                      .recognizeFace();
+                                }
+                              },
+                              text: AppStrings.done,
+                            ),
+                    ],    
                   ),
                 ),
               ),
