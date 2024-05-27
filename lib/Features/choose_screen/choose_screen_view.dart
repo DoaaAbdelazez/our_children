@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:our_children/Features/home/presentation/Screens/all_user_screen.dart';
+import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
 import 'package:our_children/core/functions/navigation.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_strings.dart';
@@ -40,7 +43,12 @@ class ChooseScreenView extends StatelessWidget {
                 ),
                 CustomButtonChoose(
                     onPressed: () {
-                      customNavigate(context, "/AllUserScreen");
+                      BlocProvider.of<HomeCubit>(context).getAllFaces();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => AllUserScreen())));
+                      // customNavigate(context, "/AllUserScreen");
                     },
                     text: AppStrings.searchFamily),
 

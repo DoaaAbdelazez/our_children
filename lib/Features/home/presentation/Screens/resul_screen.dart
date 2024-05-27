@@ -69,7 +69,8 @@ class ResulteScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
                                   BlocProvider.of<HomeCubit>(context)
-                                      .getPersonInfo(resultModel.nearestFaces[0].id);
+                                      .getPersonInfo(
+                                          resultModel.nearestFaces[0].id);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -98,7 +99,8 @@ class ResulteScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
                                   BlocProvider.of<HomeCubit>(context)
-                                      .getPersonInfo(resultModel.nearestFaces[1].id);
+                                      .getPersonInfo(
+                                          resultModel.nearestFaces[1].id);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -133,7 +135,8 @@ class ResulteScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
                                   BlocProvider.of<HomeCubit>(context)
-                                      .getPersonInfo(resultModel.nearestFaces[2].id);
+                                      .getPersonInfo(
+                                          resultModel.nearestFaces[2].id);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -162,7 +165,8 @@ class ResulteScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
                                   BlocProvider.of<HomeCubit>(context)
-                                      .getPersonInfo(resultModel.nearestFaces[3].id);
+                                      .getPersonInfo(
+                                          resultModel.nearestFaces[3].id);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

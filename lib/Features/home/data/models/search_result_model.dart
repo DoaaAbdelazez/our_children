@@ -13,15 +13,15 @@ class SearchResultModel {
 
 class PersonModel {
   final String id;
-  final double distance;
+  
   final String image;
 
-  PersonModel({required this.id, required this.distance, required this.image});
+  PersonModel({required this.id,  required this.image});
 
   factory PersonModel.fromJson(Map<String, dynamic> jsonData) {
     return PersonModel(
       id: jsonData['id'],
-      distance: jsonData['distance'],
+      
       image: jsonData['image'],
     );
   }

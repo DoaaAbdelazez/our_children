@@ -125,4 +125,37 @@ class HomeCubit extends Cubit<HomeState> {
       emit(GetPersonInfoErrorState(message: e.errorModel.message));
     }
   }
+
+  deleteRequest(String id) async {
+    try {
+      emit(DeleteRequestLoadingState());
+      await api.delete(EndPoint.delrequestEndPoint(id));
+      await api.post(
+        EndPoint.ourChildrenDeletFace,
+        data: {
+          ApiKey.userId: id,
+        },
+        isFormData: true,
+      );
+      emit(DeleteRequestSuccessState());
+    } on ServerException catch (e) {
+      emit(DeleteRequestErrorState(message: e.errorModel.message));
+    }
+  }
+
+  getAllFaces() async {
+    try {
+      emit(GetAllFacesLoadingState());
+      final response = await api.get(EndPoint.ourChildrengetAllFaces);
+
+      List<PersonModel> facesModel = [];
+      for (var item in response['faces']) {
+        facesModel.add(PersonModel.fromJson(item));
+      }
+
+      emit(GetAllFacesSuccessState(allFaces: facesModel));
+    } on ServerException catch (e) {
+      emit(GetAllFacesErrorState(message: e.errorModel.message));
+    }
+  }
 }

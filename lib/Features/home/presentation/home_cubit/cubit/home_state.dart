@@ -54,6 +54,30 @@ final class UploadReportPic extends HomeState {}
 
 final class ImagePickerState extends HomeState {}
 
+final class DeleteRequestLoadingState extends HomeState {}
+
+final class DeleteRequestSuccessState extends HomeState {}
+
+final class DeleteRequestErrorState extends HomeState {
+  final String message;
+
+  DeleteRequestErrorState({required this.message});
+}
+
+final class GetAllFacesLoadingState extends HomeState {}
+
+final class GetAllFacesSuccessState extends HomeState {
+  final List<PersonModel> allFaces;
+
+  GetAllFacesSuccessState({required this.allFaces});
+}
+
+final class GetAllFacesErrorState extends HomeState {
+  final String message;
+
+  GetAllFacesErrorState({required this.message});
+}
+
 final class GetPersonInfoLoadingState extends HomeState {}
 
 final class GetPersonInfoSuccessState extends HomeState {
