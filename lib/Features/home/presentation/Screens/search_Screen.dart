@@ -28,14 +28,12 @@ class _SearchScreenState extends State<SearchScreen> {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
         if (state is RecognizeFaceSuccessState) {
-          if (state is AddfaceSuccessState) {
-            Navigator.pop(context);
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text("تمت بنجاح"),
-              ),
-            );
-          }
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text("تمت بنجاح"),
+            ),
+          );
+
           // print(BlocProvider.of<HomeCubit>(context)
           //     .searchResultList!
           //     .nearestFaces[0]
@@ -131,7 +129,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         height: 100.h,
                       ),
                       //!bttn
-                  state is RecognizeFaceLoadingState
+                      state is RecognizeFaceLoadingState
                           ? const CusotmLoadingIndicator()
                           : CustomButtnHome(
                               onPressed: () {
@@ -144,7 +142,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               },
                               text: AppStrings.done,
                             ),
-                    ],    
+                    ],
                   ),
                 ),
               ),

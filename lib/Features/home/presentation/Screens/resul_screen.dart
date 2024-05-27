@@ -1,10 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:our_children/Features/home/data/models/search_result_model.dart';
+import 'package:our_children/Features/home/presentation/Screens/child_info_screen.dart';
 import 'package:our_children/Features/home/presentation/home_cubit/cubit/home_cubit.dart';
 import 'package:our_children/core/utils/app_assets.dart';
 import 'package:our_children/core/utils/app_colors.dart';
@@ -40,15 +43,18 @@ class ResulteScreen extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Container(
-                        alignment: Alignment.center,
-                        width: 300,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: FileImage(File(yourImage.path))),
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColors.white,
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 300,
+                          height: 150,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: FileImage(File(yourImage.path))),
+                            borderRadius: BorderRadius.circular(20),
+                            color: AppColors.white,
+                          ),
                         ),
                       ),
                       const SizedBox(
@@ -60,31 +66,59 @@ class ResulteScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                alignment: Alignment.center,
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: MemoryImage(base64Decode(
-                                          resultModel.nearestFaces[0].image))),
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: AppColors.white,
+                              GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<HomeCubit>(context)
+                                      .getPersonInfo(resultModel.nearestFaces[0].id);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              ChildInfoScreen(
+                                                  personModel: resultModel
+                                                      .nearestFaces[0]))));
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: 150,
+                                  height: 150,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: MemoryImage(base64Decode(
+                                            resultModel
+                                                .nearestFaces[0].image))),
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: AppColors.white,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
                                 width: 15,
                               ),
-                              Container(
-                                alignment: Alignment.center,
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: MemoryImage(base64Decode(
-                                          resultModel.nearestFaces[1].image))),
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: AppColors.white,
+                              GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<HomeCubit>(context)
+                                      .getPersonInfo(resultModel.nearestFaces[1].id);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              ChildInfoScreen(
+                                                  personModel: resultModel
+                                                      .nearestFaces[1]))));
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: 150,
+                                  height: 150,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: MemoryImage(base64Decode(
+                                            resultModel
+                                                .nearestFaces[1].image))),
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: AppColors.white,
+                                  ),
                                 ),
                               ),
                             ],
@@ -96,31 +130,59 @@ class ResulteScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                alignment: Alignment.center,
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: MemoryImage(base64Decode(
-                                          resultModel.nearestFaces[2].image))),
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: AppColors.white,
+                              GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<HomeCubit>(context)
+                                      .getPersonInfo(resultModel.nearestFaces[2].id);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              ChildInfoScreen(
+                                                  personModel: resultModel
+                                                      .nearestFaces[2]))));
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: 150,
+                                  height: 150,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: MemoryImage(base64Decode(
+                                            resultModel
+                                                .nearestFaces[2].image))),
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: AppColors.white,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
                                 width: 15,
                               ),
-                              Container(
-                                alignment: Alignment.center,
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: MemoryImage(base64Decode(
-                                          resultModel.nearestFaces[3].image))),
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: AppColors.white,
+                              GestureDetector(
+                                onTap: () {
+                                  BlocProvider.of<HomeCubit>(context)
+                                      .getPersonInfo(resultModel.nearestFaces[3].id);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              ChildInfoScreen(
+                                                  personModel: resultModel
+                                                      .nearestFaces[3]))));
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  width: 150,
+                                  height: 150,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: MemoryImage(base64Decode(
+                                            resultModel
+                                                .nearestFaces[3].image))),
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: AppColors.white,
+                                  ),
                                 ),
                               ),
                             ],

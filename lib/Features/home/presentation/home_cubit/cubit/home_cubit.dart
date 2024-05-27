@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:our_children/Features/home/data/models/create_child_model.dart';
+import 'package:our_children/Features/home/data/models/home_request_model/home_request_model.dart';
 import 'package:our_children/Features/home/data/models/search_result_model.dart';
 import 'package:our_children/core/database/api/api_consumer.dart';
 import 'package:our_children/core/database/api/end_points.dart';
@@ -109,6 +110,19 @@ class HomeCubit extends Cubit<HomeState> {
           resultModel: SearchResultModel.fromJson(response)));
     } on ServerException catch (e) {
       emit(RecognizeFaceErrorState(error: e.errorModel.message));
+    }
+  }
+
+  getPersonInfo(String id) async {
+    try {
+      emit(GetPersonInfoLoadingState());
+      final response = await api.get(EndPoint.getrequestEndPoint(id));
+      emit(GetPersonInfoSuccessState(
+          homeRequestModel: HomeRequestModel
+              .fromSuccessTrueDataId664fadab67464f7458999abcNameSssGenderMaleLocationSadsaGovernorateSadsaPhone12321421CreatedBy664d241dba52a73572a72dcdCreatedAt20240523T205715388ZUpdatedAt20240523T205715388ZV0(
+                  response)));
+    } on ServerException catch (e) {
+      emit(GetPersonInfoErrorState(message: e.errorModel.message));
     }
   }
 }

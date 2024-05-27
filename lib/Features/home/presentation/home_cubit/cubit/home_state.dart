@@ -26,7 +26,8 @@ final class RecognizeFaceSuccessState extends HomeState {
   final SearchResultModel resultModel;
   final XFile yourimage;
 
-RecognizeFaceSuccessState({required this.yourimage, required this.resultModel});
+  RecognizeFaceSuccessState(
+      {required this.yourimage, required this.resultModel});
 }
 
 final class RecognizeFaceErrorState extends HomeState {
@@ -52,3 +53,17 @@ final class UploadSearchPic extends HomeState {}
 final class UploadReportPic extends HomeState {}
 
 final class ImagePickerState extends HomeState {}
+
+final class GetPersonInfoLoadingState extends HomeState {}
+
+final class GetPersonInfoSuccessState extends HomeState {
+  final HomeRequestModel homeRequestModel;
+
+  GetPersonInfoSuccessState({required this.homeRequestModel});
+}
+
+final class GetPersonInfoErrorState extends HomeState {
+  final String message;
+
+  GetPersonInfoErrorState({required this.message});
+}
